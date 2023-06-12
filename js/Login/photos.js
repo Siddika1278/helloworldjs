@@ -1,0 +1,1 @@
+logJSONData("https://jsonplaceholder.typicode.com/photos");
