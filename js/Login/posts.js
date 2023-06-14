@@ -5,15 +5,13 @@ async function logJSONData( url){
       const response = await fetch(url);
       
       const result = await response.json();
-      document.getElementById('fetch').innerHTML = JSON.stringify(result);
-      console.log(result);
       let html = "";
       result.forEach((post)=>{
-        html += '<div>'+
-                  '<p>' +post.id +'</p>'+
-                  '<p>'+ post.body +'</p>'+
-                '</div>';
-      });
+            
+      html+= `<div class= "box"><div class="pad"><div class= "ptitle"><p>${post.title}</p></div>
+      <div class="pbody"<p>${post.body}</P></div></div></div>`
+});
+
       document.getElementById('fetch').innerHTML = html;
         
     }

@@ -1,0 +1,5 @@
+z = document.getElementById("navBar");
+// console.log("I M TRYING");
+
+// console.log(z);
+z.innerHTML = `<style> body { margin: 0; } ul{ list-style-type: none; margin: 0; padding:0; overflow : hidden; background-color: #333; width: 100%; } li{ float: left; } li a{ display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none; font-variant: small-caps; } li a:hover{ background-color: #111; } li a:active{ background-color: blue; } </style> </head> <body> <div class="navbar"> <ul> <li><a href="page.html">login</a></li> <li><a href="posts.html">posts</a></li> <li><a href="comments.html">comments</a></li> <li><a href="albums.html">albums</a></li> <li><a href="photos.html">photos</a></li> <li><a href="users.html">users</a></li> </ul> </div> </body>`

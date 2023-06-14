@@ -1,0 +1,20 @@
+
+.box {
+    border: 1px solid grey;
+    margin: 5px;
+    border-radius: 10px;
+    /* width: 33.33%; */
+    float: left;
+    padding: 5px;
+    background-color: #c05050;
+}
+.box p{
+    font-size: 20px;
+    text-transform: capitalize;
+    font-style: italic;
+    padding: 15px;
+    color: black;
+}
+html{
+    background-color: rgb(191, 189, 189);
+}
