@@ -13,21 +13,24 @@
         <!-- <div class="centered"> -->
         <div class="form">
             <!-- <h2>left</h2> -->
-            
-               
-                <form action="#" class="formcontent">
-                    <div class="title">
-                        <h2>New Transaction</h2>
-                    </div>
-                    <div>
+
+
+            <form action="#" class="formcontent">
+                <div class="title">
+                    <h2>New Transaction</h2>
+                </div>
+                <div class="firstrow row">
+                    <div class="date leftdiv">
                         <label>Choose a Date</label>
                         <input type="date" name="" required="">
                     </div>
-                    <div>
+                    <div class="time rightdiv">
                         <label>Choose a Time</label>
                         <input type="time" name="" required="">
                     </div>
-                    <div>
+                </div>
+                <div class="row">
+                    <div class="leftdiv">
                         <label for="category">Choose a Category</label>
                         <select name="category" id="category">
                             <option value="select">Select a Category</option>
@@ -38,31 +41,34 @@
                             <!-- <option value="mango">Mango</option> -->
                         </select>
                     </div>
-                    <div>
+                    <div class="rightdiv">
                         <label>Enter the Amount</label>
                         <input type="number" name="" required="">
                     </div>
-                    <div>
-                        <label>Description</label>
-                        <textarea name="description"></textarea>
+                </div>
+                <div class="row">
+                    <label class="descrowlabel">Description</label>
+                    <textarea name="description"></textarea>
+                </div>
+                <div>
+                    <label class="descrowlabel">Payment Mode</label>
+                    <div class="flexdiv">
+                            <label><input type="radio" name="method" value="cash" />Cash</label>
+                            <label><input type="radio" name="method" value="debitcard" />Debit Card</label>
+                            <label><input type="radio" name="method" value="creditcard" />Credit Card</label>
                     </div>
-                    <div>
-                        Payment Mode
-                        <label><input type="radio" name="method" value="cash" />Cash</label>
-                        <label><input type="radio" name="method" value="debitcard" />Debit Card</label>
-                        <label><input type="radio" name="method" value="creditcard" />Credit Card</label>
+                </div>
+                <div class="clearfix floatright divsinline">
+                    <div class="box ">
+                        <button class="primary">ADD</button>
                     </div>
-                    <div class="clearfix">
-                        <div class="box">
-                            <button>ADD</button>
-                        </div>
-                        <div class="box1">
-                            <button>CANCEL</button>
-                        </div>
+                    <div class="box">
+                        <button class="sec">CANCEL</button>
                     </div>
+                </div>
 
-                </form>
-            
+            </form>
+
 
         </div>
     </div>
