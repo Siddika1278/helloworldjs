@@ -8,11 +8,12 @@
 </head>
 <body>
     <div class="split left">
-        <div class="centered">
+        <!-- <div class="centered"> -->
+            <div class="form">
             <!-- <h2>left</h2> -->
             <div class="title">
                 <h2>New-Transaction</h2>
-            <form action = "#" >
+            <form action = "#" class="formcontent">
                 <div>
                     <label>Choose a Date</label>
                     <input type="date" name="" required="">
@@ -31,6 +32,20 @@
                         <option value="te">Travel Expense</option>
                         <!-- <option value="mango">Mango</option> -->
                     </select>
+                </div>
+                <div>
+                    <label>Enter the Amount</label>
+                    <input type="number" name="" required="">
+                </div>
+                <div>
+                    <label>Description</label>
+                    <textarea name="description"></textarea>
+                </div>
+                <div>
+                    Payment Mode
+                    <label><input type="radio" name="method" value="cash"/>Cash</label>
+                    <label><input type="radio" name="method" value="debitcard"/>Debit Card</label>
+                    <label><input type="radio" name="method" value="creditcard"/>Credit Card</label>
                 </div>
                 <div class="clearfix">
                     <div class="box">
