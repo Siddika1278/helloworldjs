@@ -38,7 +38,7 @@ async function logJSONData(url) {
             //   '<p>'+ tempAddress + '<p>'+
 
             html += `<div class= "box" id="mainHuin">
-            <div class="pad" onclick="hi('Address of ${post.name} is ${tempAddress}')">
+            <div class="pad" onclick="hi(' ${post.name} stays at ${tempAddress}')">
             <div class= "pname"><p>${post.name}</p></div>
             <div class="puname"<p>${post.username}</P></div>
             <div class="pno"<p>${post.phone}</P> </div>
