@@ -1,70 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/css/ExpenseTracker/firstpage.css">
 </head>
+
 <body>
     <div class="split left">
         <!-- <div class="centered"> -->
-            <div class="form">
+        <div class="form">
             <!-- <h2>left</h2> -->
-            <div class="title">
-                <h2>New-Transaction</h2>
-            <form action = "#" class="formcontent">
-                <div>
-                    <label>Choose a Date</label>
-                    <input type="date" name="" required="">
-                </div>
-                <div>
-                    <label>Choose a Time</label>
-                    <input type="time" name="" required="">
-                </div>
-                <div>
-                    <label for="category">Choose a Category</label>
-                    <select name="category" id="category">
-                        <option value="select">Select a Category</option>
-                        <option value="dp">Dairy Products</option>
-                        <option value="snacks">Snacks</option>
-                        <option value="electronics">Electronics</option>
-                        <option value="te">Travel Expense</option>
-                        <!-- <option value="mango">Mango</option> -->
-                    </select>
-                </div>
-                <div>
-                    <label>Enter the Amount</label>
-                    <input type="number" name="" required="">
-                </div>
-                <div>
-                    <label>Description</label>
-                    <textarea name="description"></textarea>
-                </div>
-                <div>
-                    Payment Mode
-                    <label><input type="radio" name="method" value="cash"/>Cash</label>
-                    <label><input type="radio" name="method" value="debitcard"/>Debit Card</label>
-                    <label><input type="radio" name="method" value="creditcard"/>Credit Card</label>
-                </div>
-                <div class="clearfix">
-                    <div class="box">
-                        <button>ADD</button>
-                    </div>   
-                    <div class="box1">
-                        <button>CANCEL</button>
-                    </div>          
-                </div>
-        
-            </form>
-            </div>
-        
+            
+               
+                <form action="#" class="formcontent">
+                    <div class="title">
+                        <h2>New Transaction</h2>
+                    </div>
+                    <div>
+                        <label>Choose a Date</label>
+                        <input type="date" name="" required="">
+                    </div>
+                    <div>
+                        <label>Choose a Time</label>
+                        <input type="time" name="" required="">
+                    </div>
+                    <div>
+                        <label for="category">Choose a Category</label>
+                        <select name="category" id="category">
+                            <option value="select">Select a Category</option>
+                            <option value="dp">Dairy Products</option>
+                            <option value="snacks">Snacks</option>
+                            <option value="electronics">Electronics</option>
+                            <option value="te">Travel Expense</option>
+                            <!-- <option value="mango">Mango</option> -->
+                        </select>
+                    </div>
+                    <div>
+                        <label>Enter the Amount</label>
+                        <input type="number" name="" required="">
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <textarea name="description"></textarea>
+                    </div>
+                    <div>
+                        Payment Mode
+                        <label><input type="radio" name="method" value="cash" />Cash</label>
+                        <label><input type="radio" name="method" value="debitcard" />Debit Card</label>
+                        <label><input type="radio" name="method" value="creditcard" />Credit Card</label>
+                    </div>
+                    <div class="clearfix">
+                        <div class="box">
+                            <button>ADD</button>
+                        </div>
+                        <div class="box1">
+                            <button>CANCEL</button>
+                        </div>
+                    </div>
+
+                </form>
+            
+
         </div>
     </div>
+
     <div class="split right">
         <div class="centered">
             <h1>right</h1>
         </div>
     </div>
 </body>
+
 </html>
