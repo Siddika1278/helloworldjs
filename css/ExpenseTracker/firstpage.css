@@ -67,8 +67,10 @@ input,select,textarea{
     margin-left: 10px;
     margin-bottom: 10px;
     padding: 0px;
-
+    color: grey;
+    font-size: 16px;
 }
+
 
 .leftdiv label,.rightdiv label{
     display: block;
@@ -87,6 +89,7 @@ input,select,textarea{
 .row{
     clear: both;
     padding: 20px;
+    padding-bottom: initial;
 }
 .descrowlabel{
     display: block;
@@ -99,6 +102,7 @@ textarea{
     display: flex;
     text-align: center;
     width: 95%;
+    padding-top: 20px;
 }
 .flexdiv > *{
     flex-grow: 1;
@@ -131,7 +135,7 @@ input[type="radio"] {
 }
 .row.buttons {
     display: flex;
-    margin-left: 69%;
+    margin-left: 67%;
 }
 .box {
     padding: 5px;
