@@ -46,19 +46,23 @@ body {
     box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
     border-radius: 2px;
 }
-.formcontent{
+
+.formcontent {
     padding: 20px;
     position: relative;
     top: 50%;
     left: 50%;
-    height: relative;
     transform: translate(-50%, -50%);
-   
+    height: auto;
 }
-.formcontent > div{
+
+.formcontent>div {
     margin-left: 20px;
 }
-input,select,textarea{
+
+input,
+select,
+textarea {
     border: 0px solid #c0c0c0;
     border-bottom: 1px solid #c0c0c0;
     background-color: transparent;
@@ -72,72 +76,90 @@ input,select,textarea{
 }
 
 
-.leftdiv label,.rightdiv label{
+.leftdiv label,
+.rightdiv label {
     display: block;
 }
-.leftdiv input,.rightdiv input,
-.leftdiv select,.rightdiv select{
+
+.leftdiv input,
+.rightdiv input,
+.leftdiv select,
+.rightdiv select {
     display: block;
     width: 100%;
 }
-.leftdiv,.rightdiv{
+
+.leftdiv,
+.rightdiv {
     float: left;
     width: 40%;
     margin-right: 40px;
 }
 
-.row{
+.row {
     clear: both;
     padding: 20px;
     padding-bottom: initial;
 }
-.descrowlabel{
+
+.descrowlabel {
     display: block;
     width: 100%;
 }
-textarea{
+
+textarea {
     width: 85%;
 }
+
 .flexdiv {
     display: flex;
     text-align: center;
     width: 95%;
     padding-top: 20px;
 }
-.flexdiv > *{
+
+.flexdiv>* {
     flex-grow: 1;
 }
-.floatright{
+
+.floatright {
     float: right;
 }
-.clearfix{
+
+.clearfix {
     clear: both;
 }
-.floatright.divsinline .box{
+
+.floatright.divsinline .box {
     display: inline;
 }
-.box button{
+
+.box button {
     border-radius: 4px;
     padding: 8px;
 }
-.box button.primary{
+
+.box button.primary {
     color: white;
     background-color: blue;
     border: 1px solid blue;
 }
-.box button.sec{
+
+.box button.sec {
     background-color: white;
     color: blue;
     border: 1px solid blue;
 }
+
 input[type="radio"] {
     height: auto;
 }
+
 .row.buttons {
     display: flex;
     margin-left: 67%;
 }
+
 .box {
     padding: 5px;
 }
-
