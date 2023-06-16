@@ -48,6 +48,12 @@ body {
 }
 .formcontent{
     padding: 20px;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: relative;
+    transform: translate(-50%, -50%);
+   
 }
 .formcontent > div{
     margin-left: 20px;
@@ -87,11 +93,12 @@ input,select,textarea{
     width: 100%;
 }
 textarea{
-    width: 90%;
+    width: 85%;
 }
 .flexdiv {
     display: flex;
     text-align: center;
+    width: 95%;
 }
 .flexdiv > *{
     flex-grow: 1;
@@ -119,17 +126,14 @@ textarea{
     color: blue;
     border: 1px solid blue;
 }
-/* .firstrow{
+input[type="radio"] {
+    height: auto;
+}
+.row.buttons {
+    display: flex;
+    margin-left: 69%;
+}
+.box {
+    padding: 5px;
+}
 
-}
-.date { 
-    float: left;
-    width: 50%;
-    padding: 10px;
-}
-.time{
-    float: right;
-    width: 50%;
-    padding: 10px;
-    text-align: center;
-} */

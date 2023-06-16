@@ -19,7 +19,7 @@
                 <div class="title">
                     <h2>New Transaction</h2>
                 </div>
-                <div class="firstrow row">
+                <div class="row">
                     <div class="date leftdiv">
                         <label>Choose a Date</label>
                         <input type="date" name="" required="">
@@ -50,7 +50,7 @@
                     <label class="descrowlabel">Description</label>
                     <textarea name="description"></textarea>
                 </div>
-                <div>
+                <div class="row">
                     <label class="descrowlabel">Payment Mode</label>
                     <div class="flexdiv">
                             <label><input type="radio" name="method" value="cash" />Cash</label>
@@ -58,18 +58,16 @@
                             <label><input type="radio" name="method" value="creditcard" />Credit Card</label>
                     </div>
                 </div>
-                <div class="clearfix floatright divsinline">
-                    <div class="box ">
+                <!-- <div class="clearfix floatright divsinline row"> -->
+                <div class="row buttons">
+                    <div class="box">
                         <button class="primary">ADD</button>
                     </div>
                     <div class="box">
                         <button class="sec">CANCEL</button>
                     </div>
                 </div>
-
             </form>
-
-
         </div>
     </div>
 
