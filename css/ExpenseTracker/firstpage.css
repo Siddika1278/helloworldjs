@@ -35,10 +35,10 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 45vw;
+    /* width: 45vw; */
     /* height:45vh; */
     /* padding: 40px; */
-    height: 90%;
+    height: 60%;
     width: 90%;
     transform: translate(-50%, -50%);
     background: rgba(245, 243, 243, 1);
@@ -92,7 +92,7 @@ textarea {
 .leftdiv,
 .rightdiv {
     float: left;
-    width: 40%;
+    width: 44%;
     margin-right: 40px;
 }
 
@@ -108,7 +108,7 @@ textarea {
 }
 
 textarea {
-    width: 85%;
+    width: 94%;
 }
 
 .flexdiv {
@@ -157,7 +157,7 @@ input[type="radio"] {
 
 .row.buttons {
     display: flex;
-    margin-left: 67%;
+    margin-left: 74%;
 }
 
 .box {
