@@ -64,3 +64,9 @@ function hi(x) {
 }
 
 logJSONData("https://jsonplaceholder.typicode.com/users");
+
+//
+// expenses = []
+// on each add
+// singleEXp = {date:,amount,}
+// exp.add(singleEXp);

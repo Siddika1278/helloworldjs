@@ -9,6 +9,7 @@
 </head>
 
 <body>
+ 
     <div class="split left">
         <!-- <div class="centered"> -->
         <div class="form">
@@ -22,46 +23,46 @@
                 <div class="row">
                     <div class="date leftdiv">
                         <label>Choose a Date</label>
-                        <input type="date" name="" required="">
+                        <input type="date" name="" required="" id="date">
                     </div>
                     <div class="time rightdiv">
                         <label>Choose a Time</label>
-                        <input type="time" name="" required="">
+                        <input type="time" name="" required="" id="time">
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftdiv">
                         <label for="category">Choose a Category</label>
-                        <select name="category" id="category">
-                            <option value="select">Select a Category</option>
-                            <option value="dp">Dairy Products</option>
-                            <option value="snacks">Snacks</option>
-                            <option value="electronics">Electronics</option>
-                            <option value="te">Travel Expense</option>
+                        <select name="category" id="category" id="category">
+                            <option>Select a Category</option>
+                            <option>Dairy Products</option>
+                            <option>Snacks</option>
+                            <option>Electronics</option>
+                            <option>Travel Expense</option>
                             <!-- <option value="mango">Mango</option> -->
                         </select>
                     </div>
                     <div class="rightdiv">
                         <label>Enter the Amount</label>
-                        <input type="number" name="" required="">
+                        <input type="number" name="" required="" id="amount">
                     </div>
                 </div>
                 <div class="row">
                     <label class="descrowlabel">Description</label>
-                    <textarea name="description"></textarea>
+                    <textarea name="description" id="description"></textarea>
                 </div>
                 <div class="row">
                     <label class="descrowlabel">Payment Mode</label>
                     <div class="flexdiv">
-                        <label><input type="radio" name="method" value="cash" />Cash</label>
-                        <label><input type="radio" name="method" value="debitcard" />Debit Card</label>
-                        <label><input type="radio" name="method" value="creditcard" />Credit Card</label>
+                        <label><input type="radio" name="method" value="cash" class="check"/>Cash</label>
+                        <label><input type="radio" name="method" value="debit card" class="check"/>Debit Card</label>
+                        <label><input type="radio" name="method" value="credit card" class="check"/>Credit Card</label>
                     </div>
                 </div>
                 <!-- <div class="clearfix floatright divsinline row"> -->
                 <div class="row buttons">
                     <div class="box">
-                        <button class="primary">ADD</button>
+                        <button class="primary" type="button" onclick="add()">ADD</button>
                     </div>
                     <div class="box">
                         <button class="sec">CANCEL</button>
@@ -72,10 +73,28 @@
     </div>
 
     <div class="split right">
-        <div class="centered">
-            <h1>right</h1>
-        </div>
+        <!-- <div class="centered"> -->
+            <!-- <h1>right</h1> -->
+        <!-- </div> -->
+        <table>
+            <thead>
+            <tr>
+                <th>date</th>
+                <th>time</th>
+                <th>category</th>
+                <th>amount</th>
+                <th>description</th>
+                <th>payment mode</th>
+            </tr>
+        </thead>
+        <tbody id="data">
+        </tbody>
+        </table>
     </div>
+
+
+
+    <script src="/js/ExpenseTracker/firstpage.js"></script>
 </body>
 
 </html>
