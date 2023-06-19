@@ -166,3 +166,35 @@ input[type="radio"] {
 
 
 
+ul#data {
+    list-style-type: none;
+    padding: inherit;
+    margin:50px
+}
+
+li.eachentry {
+    background-color: #d1c0c0;
+    padding: 13px;
+    border: 1px solid grey;
+    border-radius: 15px;
+    margin:5px;
+}
+
+.title {
+    font-size: larger;
+    /* font-style: italic; */
+    font-weight: bold;
+    float: left;
+}
+
+.amount {
+    float: right;
+    color: green;
+    font-size: medium;
+}
+
+.description {
+    clear: both;
+    font-size:small;
+    font-style:italic;
+}

@@ -59,15 +59,10 @@ function add() {
 //     <td>${variable.method}</td> 
 //     <tr>` ;
 // }
-
-
 variable = singleExp;
 document.getElementById('data').innerHTML += 
-    `<li>${variable.date}</li>
-    <li>${variable.time}</li>
-    <li>${variable.category}</li>
-    <li>${variable.amount}</li>
-    <li>${variable.description}</li> 
-    <li>${variable.method}</li> 
+    `<li class="eachentry"><div class="title">${variable.category}</div>
+    <div class="amount">Rs. ${variable.amount}</div>
+    <div class="description">${variable.description}</div></li>
     ` ;
 }
