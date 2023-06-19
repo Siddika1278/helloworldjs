@@ -49,17 +49,25 @@ function add() {
 
 
 //here we append new row with input data in tablebody in html file we gave id="data" in tbody tag
+// variable = singleExp;
+// document.getElementById('data').innerHTML += 
+//     `<tr><td>${variable.date}</td>
+//     <td>${variable.time}</td>
+//     <td>${variable.category}</td>
+//     <td>${variable.amount}</td>
+//     <td>${variable.description}</td> 
+//     <td>${variable.method}</td> 
+//     <tr>` ;
+// }
+
+
 variable = singleExp;
 document.getElementById('data').innerHTML += 
-    `<tr><td>${variable.date}</td>
-    <td>${variable.time}</td>
-    <td>${variable.category}</td>
-    <td>${variable.amount}</td>
-    <td>${variable.description}</td> 
-    <td>${variable.method}</td> 
-    <tr>` ;
+    `<li>${variable.date}</li>
+    <li>${variable.time}</li>
+    <li>${variable.category}</li>
+    <li>${variable.amount}</li>
+    <li>${variable.description}</li> 
+    <li>${variable.method}</li> 
+    ` ;
 }
-
-
-
-
