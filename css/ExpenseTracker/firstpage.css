@@ -198,3 +198,7 @@ li.eachentry {
     font-size:small;
     font-style:italic;
 }
+
+.hidden{
+    display: none;
+}

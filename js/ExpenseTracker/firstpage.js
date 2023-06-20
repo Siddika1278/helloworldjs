@@ -61,8 +61,23 @@ function add() {
 // }
 variable = singleExp;
 document.getElementById('data').innerHTML += 
-    `<li class="eachentry"><div class="title">${variable.category}</div>
+    `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
+    <div class="title">${variable.category}</div>
     <div class="amount">Rs. ${variable.amount}</div>
     <div class="description">${variable.description}</div></li>
     ` ;
+}
+
+function details(x){
+    let singleexp = expenses[x];
+    document.getElementById('date').value = singleexp.date;
+    document.getElementById('time').value = singleexp.time;
+    document.getElementById('category').value = singleexp.category;
+    document.getElementById('amount').value = singleexp.amount;
+    document.getElementById('description').value = singleexp.description;
+    document.querySelector('input[value="'+singleexp.method+'"]').click();
+
+    document.getElementById('addbtn').classList.add('hidden');
+    document.getElementById('update').classList.remove('hidden');
+    document.getElementById('update').setAttribute("expid",x);
 }
