@@ -59,10 +59,43 @@ function add() {
 //     <td>${variable.method}</td> 
 //     <tr>` ;
 // }
+
+
 variable = singleExp;
 document.getElementById('data').innerHTML += 
-    `<li class="eachentry"><div class="title">${variable.category}</div>
-    <div class="amount">Rs. ${variable.amount}</div>
-    <div class="description">${variable.description}</div></li>
+    `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
+    `+getBody(variable)+`</li>
     ` ;
 }
+function getBody(m){
+    return `<div class="title">${m.category}</div>
+    <div class="amount">Rs. ${m.amount}</div>
+    <div class="description">${m.description}</div>`;
+}
+
+function details(x){
+    let singleexp = expenses[x];
+    document.getElementById('date').value = singleexp.date;
+    document.getElementById('time').value = singleexp.time;
+    document.getElementById('category').value = singleexp.category;
+    document.getElementById('amount').value = singleexp.amount;
+    document.getElementById('description').value = singleexp.description;
+    document.querySelector('input[value="'+singleexp.method+'"]').click();
+
+    document.getElementById('addbtn').classList.add('hidden');
+    document.getElementById('update').classList.remove('hidden');
+    document.getElementById('update').setAttribute("expid",x);
+}
+
+function updateDetails(){
+    let x= document.getElementById('update').getAttribute('expid');
+    expenses[x].date = document.getElementById('date').value,
+    expenses[x].time = document.getElementById('time').value,
+    expenses[x].category = document.getElementById('category').value,
+    expenses[x].amount = document.getElementById('amount').value,
+    expenses[x].description = document.getElementById('description').value,
+    expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
+
+    document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
+}
+

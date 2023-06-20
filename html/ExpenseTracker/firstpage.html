@@ -9,7 +9,7 @@
 </head>
 
 <body>
- 
+
     <div class="split left">
         <!-- <div class="centered"> -->
         <div class="form">
@@ -53,15 +53,19 @@
                 <div class="row">
                     <label class="descrowlabel">Payment Mode</label>
                     <div class="flexdiv">
-                        <label><input type="radio" name="method" value="cash" class="check"/>Cash</label>
-                        <label><input type="radio" name="method" value="debit card" class="check"/>Debit Card</label>
-                        <label><input type="radio" name="method" value="credit card" class="check"/>Credit Card</label>
+                        <label><input type="radio" name="method" value="cash" class="check" />Cash</label>
+                        <label><input type="radio" name="method" value="debit card" class="check" />Debit Card</label>
+                        <label><input type="radio" name="method" value="credit card" class="check" />Credit Card</label>
                     </div>
                 </div>
                 <!-- <div class="clearfix floatright divsinline row"> -->
                 <div class="row buttons">
                     <div class="box">
-                        <button class="primary" type="button" onclick="add()">ADD</button>
+                        <button class="primary" type="button" id="addbtn" onclick="add()">ADD</button>
+                    </div>
+                    <div class="box">
+                        <button class="primary hidden" type="button" id="update"
+                            onclick="updateDetails()">UPDATE</button>
                     </div>
                     <div class="box">
                         <button class="sec">CANCEL</button>
@@ -88,7 +92,7 @@
         </table> -->
 
 
-<!--         
+        <!--         
         <table id="data" class="">
             <tr>
                 <th>date</th>
@@ -103,13 +107,13 @@
 
 
 
-    <ul id="data">
-        
-    </ul>
+        <ul id="data">
+
+        </ul>
 
 
 
-    <script src="/js/ExpenseTracker/firstpage.js"></script>
+        <script src="/js/ExpenseTracker/firstpage.js"></script>
 </body>
 
 </html>
