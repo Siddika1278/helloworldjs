@@ -195,9 +195,25 @@ li.eachentry {
 
 .description {
     clear: both;
-    font-size:small;
+    font-size:large;
     font-style:italic;
 }
 .hidden{
     display: none;
+}
+
+ .error::after{
+    content: 'Fill proper details';
+    color:red;
+    margin:20px;
+    border:1px solid red;
+    padding: 5px;
+    background-color:yellow;
+}
+.deletebutton{
+    border-radius:5px;
+    background-color:rgb(133, 151, 161);
+    margin-left:92%;
+
+
 }

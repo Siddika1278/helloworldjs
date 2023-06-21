@@ -17,23 +17,25 @@
 
             <form action="#" class="formcontent">
                 <div class="title">
-                    <h2>New Transaction</h2>
+                    <h2 id="insert">New Transaction</h2>
+                    <h2 id="edit" class="hidden">Edit Your Transaction</h2>
                 </div>
                 <div class="row">
-                    <div class="date leftdiv">
-                        <label>Choose a Date</label>
+                    <div   class="date leftdiv">
+                        <label id="datelabel">Choose a Date</label>
                         <input type="date" name="" required="" id="date">
+                        <div id="datealert"></div>
                     </div>
                     <div class="time rightdiv">
-                        <label>Choose a Time</label>
+                        <label id="timelabel">Choose a Time</label>
                         <input type="time" name="" required="" id="time">
                     </div>
                 </div>
                 <div class="row">
                     <div class="leftdiv">
-                        <label for="category">Choose a Category</label>
-                        <select name="category" id="category" id="category">
-                            <option>Select a Category</option>
+                        <label id="categorylabel" for="category">Choose a Category</label>
+                        <select name="category" id="category" id="category" >
+                            <option>Choose a Category</option>
                             <option>Dairy Products</option>
                             <option>Snacks</option>
                             <option>Electronics</option>
@@ -42,17 +44,17 @@
                         </select>
                     </div>
                     <div class="rightdiv">
-                        <label>Enter the Amount</label>
+                        <label id="amountlabel">Enter the Amount</label>
                         <input type="number" name="" required="" id="amount">
                     </div>
                 </div>
                 <div class="row">
-                    <label class="descrowlabel">Description</label>
-                    <textarea name="description" id="description"></textarea>
+                    <label class="descrowlabel" id="descriptionlabel">Description</label>
+                    <textarea name="description" id="description" required=""></textarea>
                 </div>
                 <div class="row">
                     <label class="descrowlabel">Payment Mode</label>
-                    <div class="flexdiv">
+                    <div class="flexdiv" id="paymentdiv">
                         <label><input type="radio" name="method" value="cash" class="check" />Cash</label>
                         <label><input type="radio" name="method" value="debit card" class="check" />Debit Card</label>
                         <label><input type="radio" name="method" value="credit card" class="check" />Credit Card</label>
@@ -61,14 +63,14 @@
                 <!-- <div class="clearfix floatright divsinline row"> -->
                 <div class="row buttons">
                     <div class="box">
-                        <button class="primary" type="button" id="addbtn" onclick="add()">ADD</button>
+                        <button class="primary" type="button" id="addbtn" onclick="add();">ADD</button>
                     </div>
                     <div class="box">
                         <button class="primary hidden" type="button" id="update"
                             onclick="updateDetails()">UPDATE</button>
                     </div>
                     <div class="box">
-                        <button class="sec">CANCEL</button>
+                        <button class="sec" type="button" onclick="reset()">CANCEL</button>
                     </div>
                 </div>
             </form>
