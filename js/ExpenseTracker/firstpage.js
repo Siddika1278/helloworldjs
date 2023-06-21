@@ -64,7 +64,7 @@ function add() {
 variable = singleExp;
 document.getElementById('data').innerHTML += 
     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
-    `+getBody(variable)+`</li>
+    `+getBody(variable)+ `<button onclick="deleteelem('${expenses.length -1}')">DELETE</button></li>
     ` ;
 reset();
 
@@ -72,7 +72,8 @@ reset();
 function getBody(m){
     return `<div class="title">${m.category}</div>
     <div class="amount">Rs. ${m.amount}</div>
-    <div class="description">${m.description}</div>`;
+    <div class="description">${m.description}</div>
+    `;
 }
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
@@ -88,6 +89,7 @@ function reset(){
 
 function details(x){
     let singleexp = expenses[x];
+    if(singleexp === undefined) return true;
     document.getElementById('date').value = singleexp.date;
     document.getElementById('time').value = singleexp.time;
     document.getElementById('category').value = singleexp.category;
@@ -118,3 +120,21 @@ function updateDetails(){
     document.getElementById('addbtn').classList.remove('hidden');
 }
 
+function deleteelem(ms){
+    expenses[ms]=undefined;
+    document.querySelector('li[expid="'+ms+'"]').remove();
+}
+
+//mdn properties see
+
+//delete button/a => on click => likedetais(x)=> delete(x/id)
+//expenses[] assign undefine to that id's element expenses[x]=undefined;
+//if we delete id then 
+//on delete button, from id we'll fetch data and remove li element\
+//event.default/stop propogation oe etc
+
+//li ki detail wali method , event bubble ho ra hai jab delete click kiya hau , if condition expence[x]=undefined =>return true
+//
+
+
+//validations: every field required => if not inserted it should show error
