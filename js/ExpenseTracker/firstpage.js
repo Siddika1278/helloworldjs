@@ -110,7 +110,9 @@ function reset(){
     document.getElementById('category').value = "";
     document.getElementById('amount').value = "";
     document.getElementById('description').value = "";
-    document.querySelector('input[name="method"]:checked').checked = false
+    document.querySelector('input[name="method"]:checked').checked = false;
+    document.getElementById('update').classList.add('hidden');
+    document.getElementById('addbtn').classList.remove('hidden');
 
 }
 
@@ -155,14 +157,16 @@ function updateDetails(){
 
     document.getElementById('insert').classList.remove('hidden');
     document.getElementById('edit').classList.add('hidden');
-
-    document.getElementById('update').classList.add('hidden');
-    document.getElementById('addbtn').classList.remove('hidden');
 }
 
 function deleteelem(ms){
     expenses[ms]=undefined;
     document.querySelector('li[expid="'+ms+'"]').remove();
+
+    if(document.getElementById('update').getAttribute('expid')== ms){
+        return reset();
+    }
+
 }
 
 //mdn properties see
@@ -170,7 +174,7 @@ function deleteelem(ms){
 //delete button/a => on click => likedetais(x)=> delete(x/id)
 //expenses[] assign undefine to that id's element expenses[x]=undefined;
 //if we delete id then 
-//on delete button, from id we'll fetch data and remove li element\
+//on delete button, from id we'll fetch data and remove li element
 //event.default/stop propogation oe etc
 
 //li ki detail wali method , event bubble ho ra hai jab delete click kiya hau , if condition expence[x]=undefined =>return true
