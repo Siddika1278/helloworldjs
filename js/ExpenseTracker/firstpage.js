@@ -105,6 +105,7 @@ return `<div class="title">${m.category}</div>
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
 function reset(){
+    document.getElementById('inserttitle').innerHTML = `New Transaction`;
     document.getElementById('date').value = "";
     document.getElementById('time').value = "";
     document.getElementById('category').value = "";
@@ -117,6 +118,10 @@ function reset(){
 }
 
 function details(x){
+//changing title
+    // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
+    document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
+
     let singleexp = expenses[x];
     if(singleexp === undefined) return true;
     document.getElementById('date').value = singleexp.date;
@@ -127,8 +132,8 @@ function details(x){
     document.querySelector('input[value="'+singleexp.method+'"]').checked = true;
 
     //Showing the edit title
-    document.getElementById('insert').classList.add('hidden');
-    document.getElementById('edit').classList.remove('hidden');
+    // document.getElementById('inserttitle').classList.add('hidden');
+    // document.getElementById('edit').classList.remove('hidden');
 
     //hiding add button ana showning update button
     document.getElementById('addbtn').classList.add('hidden');
@@ -155,8 +160,8 @@ function updateDetails(){
     //reseting the values and showing add button and hiding update button
     reset();
 
-    document.getElementById('insert').classList.remove('hidden');
-    document.getElementById('edit').classList.add('hidden');
+    // document.getElementById('inserttitle').classList.remove('hidden');
+    // document.getElementById('edit').classList.add('hidden');
 }
 
 function deleteelem(ms){
@@ -164,7 +169,7 @@ function deleteelem(ms){
     document.querySelector('li[expid="'+ms+'"]').remove();
 
     if(document.getElementById('update').getAttribute('expid')== ms){
-        return reset();
+        reset();
     }
 
 }
