@@ -4,10 +4,67 @@
 // singleEXp = {date:,amount,}
 // exp.add(singleEXp);
 
-expenses =[];
+expenses = [
+    {
+        "date": "2023-06-19",
+        "time": "17:01",
+        "category": "Dairy Products",
+        "amount": "9576",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-23",
+        "time": "17:02",
+        "category": "Snacks",
+        "amount": "900",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-19",
+        "time": "17:32",
+        "category": "Electronics",
+        "amount": "78542",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-19",
+        "time": "17:42",
+        "category": "Travel Expense",
+        "amount": "78965",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-19",
+        "time": "17:42",
+        "category": "Snacks",
+        "amount": "530",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-19",
+        "time": "17:42",
+        "category": "Dairy Products",
+        "amount": "856",
+        "description": "ews",
+        "method": "cash"
+    },
+    {
+        "date": "2023-06-19",
+        "time": "17:42",
+        "category": "Electronics",
+        "amount": "23564",
+        "description": "ews",
+        "method": "cash"
+    }
+];
 
 function add() {
-//1. Oncick of add button the function prints the inputed value to the console.
+    //1. Oncick of add button the function prints the inputed value to the console.
 
     // console.log(document.getElementById('date').value,
     // document.getElementById('time').value,
@@ -18,9 +75,9 @@ function add() {
     // );
 
     // validate();
-    if(!validate()) return false;
-//2. Stroing the input values in object
-   
+    if (!validate()) return false;
+    //2. Stroing the input values in object
+
     const singleExp = {
         date: document.getElementById('date').value,
         time: document.getElementById('time').value,
@@ -31,13 +88,13 @@ function add() {
     }
     //to add object to array
     expenses.push(singleExp);
-   
+
     // console.log(expense.date, expense.time, expense.category, expense.amount, expense.desription, expense.method);
     console.log(expenses);
-   
+
     // let html = "";
 
-//Here it loops for aal elements so for large data it'll take time to load so instead we have to append
+    //Here it loops for aal elements so for large data it'll take time to load so instead we have to append
     // expenses.forEach((variable)=>{
 
     // html+= `<tr><td>${variable.date}</td>
@@ -49,63 +106,119 @@ function add() {
     // <tr>`});
 
 
-//here we append new row with input data in tablebody in html file we gave id="data" in tbody tag
-// variable = singleExp;
-// document.getElementById('data').innerHTML += 
-//     `<tr><td>${variable.date}</td>
-//     <td>${variable.time}</td>
-//     <td>${variable.category}</td>
-//     <td>${variable.amount}</td>
-//     <td>${variable.description}</td> 
-//     <td>${variable.method}</td> 
-//     <tr>` ;
-// }
+    //here we append new row with input data in tablebody in html file we gave id="data" in tbody tag
+    // variable = singleExp;
+    // document.getElementById('data').innerHTML += 
+    //     `<tr><td>${variable.date}</td>
+    //     <td>${variable.time}</td>
+    //     <td>${variable.category}</td>
+    //     <td>${variable.amount}</td>
+    //     <td>${variable.description}</td> 
+    //     <td>${variable.method}</td> 
+    //     <tr>` ;
+    // }
 
 
-// //1. adding id to the object
-// expenses[expenses.length -1].id = expenses.length -1;
-// //setting variable with new object that has id
-// variable = expenses[expenses.length -1];
-// document.getElementById('data').innerHTML += 
-//     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
-//     `+getBody(variable)+ `</li>
-//     ` ;
-// reset();
-// }
-// function getBody(m){
-//     return `<div class="title">${m.category}</div>
-//     <div class="amount">Rs. ${m.amount}</div>
-//     <div class="description">${m.description}</div>
-//     <button onclick="deleteelem('${m.id}')">DELETE</button>
-//     `;
-//     //m.id gives the id
-// }
+    // //1. adding id to the object
+    // expenses[expenses.length -1].id = expenses.length -1;
+    // //setting variable with new object that has id
+    // variable = expenses[expenses.length -1];
+    // document.getElementById('data').innerHTML += 
+    //     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
+    //     `+getBody(variable)+ `</li>
+    //     ` ;
+    // reset();
+    // }
+    // function getBody(m){
+    //     return `<div class="title">${m.category}</div>
+    //     <div class="amount">Rs. ${m.amount}</div>
+    //     <div class="description">${m.description}</div>
+    //     <button onclick="deleteelem('${m.id}')">DELETE</button>
+    //     `;
+    //     //m.id gives the id
+    // }
 
 
-//2. using another parameter
+    //2. using another parameter
 
-variable = singleExp;
-document.getElementById('data').innerHTML += 
-`<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
-`+getBody(variable,expenses.length -1)+ `</li>
+    variable = singleExp;
+    document.getElementById('data').innerHTML +=
+        `<li class="eachentry" expid="${expenses.length - 1}" onclick="details('${expenses.length - 1}')">
+`+ getBody(variable, expenses.length - 1) + `</li>
 ` ;
-reset();
+    reset();
 }
 
-function getBody(m,s){
-return `<div class="title">${m.category}</div>
+function getBody(m, s) {
+    return `<div class="title">${m.category}</div>
 <div class="amount">Rs. ${m.amount}</div>
 <div class="description">${m.description}</div>
+<button class="viewbutton" onclick="viewelem('${s}')">VIEW</button>
 <button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button>
 `;
 }
 
+function viewelem(xyz) {
+    document.getElementById('formcontent').classList.add('hidden');
+    document.getElementById('edit').classList.remove('hidden');
+    //    let v=Object.values(xyz);
+    let obj = expenses[xyz];
+    // for (i = 0; i < k.length; i++) {
+    //    document.getElementById('tablee').innerHTML += ` <tr>
+    //         <td>${k[i]}</td>     
+    //         <td>${}</td>      
+    //     </tr>`
+    //     // document.getElementById('property').innerHTML += `${k[i]}`
+    //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
+    // }
+    let html = "";
+    Object.entries(obj).forEach(arr => {
+        html += ` <tr>
+            <td>${arr[0]}</td>     
+            <td>${arr[1]}</td>      
+        </tr>`;
+    });
+    document.getElementById('tbody').innerHTML = html;
 
+
+}
+//cross button on view
+function change() {
+    document.getElementById('edit').classList.add('hidden');
+    document.getElementById('formcontent').classList.remove('hidden');
+    reset();
+}
 
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
-function reset(){
-    document.getElementById('inserttitle').innerHTML = `New Transaction`;
+
+function details(x) {
+    //changing title
+    // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
+    document.getElementById('inserttitle').innerHTML = `Edit Your `;
+
+    let singleexp = expenses[x];
+    if (singleexp === undefined) return true;
+    document.getElementById('date').value = singleexp.date;
+    document.getElementById('time').value = singleexp.time;
+    document.getElementById('category').value = singleexp.category;
+    document.getElementById('amount').value = singleexp.amount;
+    document.getElementById('description').value = singleexp.description;
+    document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
+
+    //Showing the edit title
+    // document.getElementById('inserttitle').classList.add('hidden');
+    // document.getElementById('edit').classList.remove('hidden');
+
+    //hiding add button ana showning update button
+    document.getElementById('addbtn').classList.add('hidden');
+    document.getElementById('update').classList.remove('hidden');
+    document.getElementById('update').setAttribute("expid", x);
+}
+
+function reset() {
+    // document.getElementById('inserttitle').innerHTML = `New Transaction`;
+    document.getElementById('inserttitle').innerHTML = `New `;
     document.getElementById('date').value = "";
     document.getElementById('time').value = "";
     document.getElementById('category').value = "";
@@ -117,46 +230,22 @@ function reset(){
 
 }
 
-function details(x){
-//changing title
-    // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
-    document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
-
-    let singleexp = expenses[x];
-    if(singleexp === undefined) return true;
-    document.getElementById('date').value = singleexp.date;
-    document.getElementById('time').value = singleexp.time;
-    document.getElementById('category').value = singleexp.category;
-    document.getElementById('amount').value = singleexp.amount;
-    document.getElementById('description').value = singleexp.description;
-    document.querySelector('input[value="'+singleexp.method+'"]').checked = true;
-
-    //Showing the edit title
-    // document.getElementById('inserttitle').classList.add('hidden');
-    // document.getElementById('edit').classList.remove('hidden');
-
-    //hiding add button ana showning update button
-    document.getElementById('addbtn').classList.add('hidden');
-    document.getElementById('update').classList.remove('hidden');
-    document.getElementById('update').setAttribute("expid",x);
-}
-
-function updateDetails(){
-    let x= document.getElementById('update').getAttribute('expid');
+function updateDetails() {
+    let x = document.getElementById('update').getAttribute('expid');
     expenses[x].date = document.getElementById('date').value,
-    expenses[x].time = document.getElementById('time').value,
-    expenses[x].category = document.getElementById('category').value,
-    expenses[x].amount = document.getElementById('amount').value,
-    expenses[x].description = document.getElementById('description').value,
-    expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
+        expenses[x].time = document.getElementById('time').value,
+        expenses[x].category = document.getElementById('category').value,
+        expenses[x].amount = document.getElementById('amount').value,
+        expenses[x].description = document.getElementById('description').value,
+        expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
     //showing the updated values in right side list
     //for the id that we updated the values in li we change it , i.e called the function and it takes the new values using id x
-    
+
     //when not taking another parameter
     // document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
 
     //when using another parameter
-    document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x],x);
+    document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
     //reseting the values and showing add button and hiding update button
     reset();
 
@@ -164,11 +253,11 @@ function updateDetails(){
     // document.getElementById('edit').classList.add('hidden');
 }
 
-function deleteelem(ms){
-    expenses[ms]=undefined;
-    document.querySelector('li[expid="'+ms+'"]').remove();
+function deleteelem(ms) {
+    expenses[ms] = undefined;
+    document.querySelector('li[expid="' + ms + '"]').remove();
 
-    if(document.getElementById('update').getAttribute('expid')== ms){
+    if (document.getElementById('update').getAttribute('expid') == ms) {
         reset();
     }
 
@@ -186,7 +275,7 @@ function deleteelem(ms){
 
 //validations: every field required => if not inserted it should show error
 
-function validate(){
+function validate() {
     // if(document.getElementById('date').value == ""){
     //     // alert("Enter the date!");
     //     document.getElementById('datealert').innerHTML = 
@@ -195,9 +284,9 @@ function validate(){
     // }
     // else
     //     document.getElementById('datealert').innerHTML = '';
-    
 
-    if(document.getElementById('date').value == ""){
+
+    if (document.getElementById('date').value == "") {
         // alert("Enter the time");
         document.getElementById('datelabel').classList.add('error');
         return false;
@@ -205,7 +294,7 @@ function validate(){
     else document.getElementById('datelabel').classList.remove('error');
 
 
-    if(document.getElementById('time').value == ""){
+    if (document.getElementById('time').value == "") {
         // alert("Enter the time");
         document.getElementById('timelabel').classList.add('error');
         return false;
@@ -226,32 +315,40 @@ function validate(){
     // if(!document.querySelectorAll('input[name="method"]:checked').length){
     //     alert("Select mode of payment");
     // }
-    if(document.getElementById('category').value == "Choose a Category"){
+    if (document.getElementById('category').value == "Choose a Category") {
         document.getElementById('categorylabel').classList.add('error');
         return false;
     }
     else document.getElementById('categorylabel').classList.remove('error');
-    
-    if(document.getElementById('amount').value == ""){
+
+    if (document.getElementById('amount').value == "") {
         document.getElementById('amountlabel').classList.add('error');
         return false;
     }
     else document.getElementById('amountlabel').classList.remove('error');
-    
-    if(document.getElementById('description').value == ""){
+
+    if (document.getElementById('description').value == "") {
         document.getElementById('descriptionlabel').classList.add('error');
         return false;
     }
     else document.getElementById('descriptionlabel').classList.remove('error');
-    
+
     // if(document.querySelector('input[name="method"]:checked') == null){
     //     alert("Select mode of payment");
     // }   
-    if(!document.querySelectorAll('input[name="method"]:checked').length){
+    if (!document.querySelectorAll('input[name="method"]:checked').length) {
         document.getElementById('paymentdiv').classList.add('error');
         return false;
     }
     else document.getElementById('paymentdiv').classList.remove('error');
-    
+
     return true;
-}   
+}
+
+
+expenses.forEach((variable, id) => {
+    document.getElementById('data').innerHTML +=
+        `<li class="eachentry" expid="${id}" onclick="details('${id}')">
+`+ getBody(variable, id) + `</li>
+` ;
+});

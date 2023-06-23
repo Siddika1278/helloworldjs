@@ -14,66 +14,82 @@
         <!-- <div class="centered"> -->
         <div class="form">
             <!-- <h2>left</h2> -->
-
-            <form action="#" class="formcontent">
-                <div class="title">
-                    <h2 id="inserttitle">New Transaction</h2>
-                    <!-- <h2 id="edit" class="hidden">Edit Your Transaction</h2> -->
-                </div>
-                <div class="row">
-                    <div   class="date leftdiv">
-                        <label id="datelabel">Choose a Date</label>
-                        <input type="date" name="" required="" id="date">
-                        <div id="datealert"></div>
+            <div id="formcontent" class="formcontent">
+                <form action="#" >
+                    <div class="title">
+                        <!-- <h2 id="inserttitle">New Transaction</h2> -->
+                        <h2><span id="inserttitle">New </span>Transaction</h2>
+                        <!-- <h2 id="edit" class="hidden">Edit Your Transaction</h2> -->
                     </div>
-                    <div class="time rightdiv">
-                        <label id="timelabel">Choose a Time</label>
-                        <input type="time" name="" required="" id="time">
+                    <div class="row">
+                        <div class="date leftdiv">
+                            <label id="datelabel">Choose a Date</label>
+                            <input type="date" name="" required="" id="date">
+                            <div id="datealert"></div>
+                        </div>
+                        <div class="time rightdiv">
+                            <label id="timelabel">Choose a Time</label>
+                            <input type="time" name="" required="" id="time">
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="leftdiv">
-                        <label id="categorylabel" for="category">Choose a Category</label>
-                        <select name="category" id="category" id="category" >
-                            <option>Choose a Category</option>
-                            <option>Dairy Products</option>
-                            <option>Snacks</option>
-                            <option>Electronics</option>
-                            <option>Travel Expense</option>
-                            <!-- <option value="mango">Mango</option> -->
-                        </select>
+                    <div class="row">
+                        <div class="leftdiv">
+                            <label id="categorylabel" for="category">Choose a Category</label>
+                            <select name="category" id="category" id="category">
+                                <option>Choose a Category</option>
+                                <option>Dairy Products</option>
+                                <option>Snacks</option>
+                                <option>Electronics</option>
+                                <option>Travel Expense</option>
+                                <!-- <option value="mango">Mango</option> -->
+                            </select>
+                        </div>
+                        <div class="rightdiv">
+                            <label id="amountlabel">Enter the Amount</label>
+                            <input type="number" name="" required="" id="amount">
+                        </div>
                     </div>
-                    <div class="rightdiv">
-                        <label id="amountlabel">Enter the Amount</label>
-                        <input type="number" name="" required="" id="amount">
+                    <div class="row">
+                        <label class="descrowlabel" id="descriptionlabel">Description</label>
+                        <textarea name="description" id="description" required=""></textarea>
                     </div>
-                </div>
-                <div class="row">
-                    <label class="descrowlabel" id="descriptionlabel">Description</label>
-                    <textarea name="description" id="description" required=""></textarea>
-                </div>
-                <div class="row">
-                    <label class="descrowlabel">Payment Mode</label>
-                    <div class="flexdiv" id="paymentdiv">
-                        <label><input type="radio" name="method" value="cash" class="check" />Cash</label>
-                        <label><input type="radio" name="method" value="debit card" class="check" />Debit Card</label>
-                        <label><input type="radio" name="method" value="credit card" class="check" />Credit Card</label>
+                    <div class="row">
+                        <label class="descrowlabel">Payment Mode</label>
+                        <div class="flexdiv" id="paymentdiv">
+                            <label><input type="radio" name="method" value="cash" class="check" />Cash</label>
+                            <label><input type="radio" name="method" value="debit card" class="check" />Debit
+                                Card</label>
+                            <label><input type="radio" name="method" value="credit card" class="check" />Credit
+                                Card</label>
+                        </div>
                     </div>
-                </div>
-                <!-- <div class="clearfix floatright divsinline row"> -->
-                <div class="row buttons">
-                    <div class="box">
-                        <button class="primary" type="button" id="addbtn" onclick="add();">ADD</button>
+                    <!-- <div class="clearfix floatright divsinline row"> -->
+                    <div class="row buttons">
+                        <div class="box">
+                            <button class="primary" type="button" id="addbtn" onclick="add();">ADD</button>
+                        </div>
+                        <div class="box">
+                            <button class="primary hidden" type="button" id="update"
+                                onclick="updateDetails()">UPDATE</button>
+                        </div>
+                        <div class="box">
+                            <button class="sec" type="button" onclick="reset()">CANCEL</button>
+                        </div>
                     </div>
-                    <div class="box">
-                        <button class="primary hidden" type="button" id="update"
-                            onclick="updateDetails()">UPDATE</button>
-                    </div>
-                    <div class="box">
-                        <button class="sec" type="button" onclick="reset()">CANCEL</button>
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <div id="edit" class="hidden">
+                <table id="tablee">
+                    <thead>
+                    <tr>
+                        <th>Property</th>
+                        <th>value</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody"></tbody>
+                </table>
+                <button  onclick="change()">x</button>
+            </div>
         </div>
     </div>
 
@@ -110,9 +126,9 @@
 
 
         <ul id="data">
-            
+
         </ul>
-        
+
 
 
 
@@ -120,3 +136,6 @@
 </body>
 
 </html>
+
+<!-- view div => button => that div should be hidden and remove hidden from form div and call reset function in it -->
+
