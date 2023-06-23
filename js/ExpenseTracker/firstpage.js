@@ -213,6 +213,7 @@ function details(x) {
     //hiding add button ana showning update button
     document.getElementById('addbtn').classList.add('hidden');
     document.getElementById('update').classList.remove('hidden');
+    
     document.getElementById('update').setAttribute("expid", x);
 }
 
@@ -336,7 +337,7 @@ function validate() {
     // if(document.querySelector('input[name="method"]:checked') == null){
     //     alert("Select mode of payment");
     // }   
-    if (!document.querySelectorAll('input[name="method"]:checked').length) {
+    if (!document.querySelectorAll('input[name="method"]:checked').length){
         document.getElementById('paymentdiv').classList.add('error');
         return false;
     }
