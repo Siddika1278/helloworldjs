@@ -127,7 +127,7 @@ function add() {
     //     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
     //     `+getBody(variable)+ `</li>
     //     ` ;
-    // reset();
+    // resetThis();
     // }
     // function getBody(m){
     //     return `<div class="title">${m.category}</div>
@@ -143,18 +143,20 @@ function add() {
 
     variable = singleExp;
     document.getElementById('data').innerHTML +=
-        `<li class="eachentry" expid="${expenses.length - 1}" onclick="details('${expenses.length - 1}')">
+        `<li class="eachentry">
 `+ getBody(variable, expenses.length - 1) + `</li>
 ` ;
-    reset();
+resetThis();
 }
 
 function getBody(m, s) {
     return `<div class="title">${m.category}</div>
 <div class="amount">Rs. ${m.amount}</div>
 <div class="description">${m.description}</div>
+<div class="buttonsdesign">
 <button class="viewbutton" onclick="viewelem('${s}')">VIEW</button>
-<button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button>
+<button class="editbutton" expid="${s}" onclick="details('${s}')">EDIT</button>
+<button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button></div>
 `;
 }
 
@@ -186,7 +188,7 @@ function viewelem(xyz) {
 function change() {
     document.getElementById('edit').classList.add('hidden');
     document.getElementById('formcontent').classList.remove('hidden');
-    reset();
+    resetThis();
 }
 
 //that will reset the values of formfields to null
@@ -211,13 +213,14 @@ function details(x) {
     // document.getElementById('edit').classList.remove('hidden');
 
     //hiding add button ana showning update button
+
     document.getElementById('addbtn').classList.add('hidden');
     document.getElementById('update').classList.remove('hidden');
     
     document.getElementById('update').setAttribute("expid", x);
 }
 
-function reset() {
+function resetThis() {
     // document.getElementById('inserttitle').innerHTML = `New Transaction`;
     document.getElementById('inserttitle').innerHTML = `New `;
     document.getElementById('date').value = "";
@@ -248,7 +251,7 @@ function updateDetails() {
     //when using another parameter
     document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
     //reseting the values and showing add button and hiding update button
-    reset();
+    resetThis();
 
     // document.getElementById('inserttitle').classList.remove('hidden');
     // document.getElementById('edit').classList.add('hidden');
@@ -259,7 +262,7 @@ function deleteelem(ms) {
     document.querySelector('li[expid="' + ms + '"]').remove();
 
     if (document.getElementById('update').getAttribute('expid') == ms) {
-        reset();
+        resetThis();
     }
 
 }
@@ -349,7 +352,7 @@ function validate() {
 
 expenses.forEach((variable, id) => {
     document.getElementById('data').innerHTML +=
-        `<li class="eachentry" expid="${id}" onclick="details('${id}')">
+        `<li class="eachentry" expid="${id}">
 `+ getBody(variable, id) + `</li>
 ` ;
 });

@@ -220,10 +220,13 @@ li.eachentry {
     padding: 5px;
     background-color:yellow;
 }
-.deletebutton{
+.deletebutton, .editbutton, .viewbutton{
     border-radius:5px;
     background-color:rgb(133, 151, 161);
-    margin-left:92%;
-
-
+    /* float:right; */
+    margin:5px;
+    /* display:inline-block; */
+}
+.buttonsdesign{
+    margin-left: 75%;
 }
