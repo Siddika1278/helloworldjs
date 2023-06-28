@@ -66,7 +66,8 @@
                     <!-- <div class="clearfix floatright divsinline row"> -->
                     <div class="row buttons">
                         <div class="box">
-                            <button class="primary" type="button" id="addbtn" onclick="add();">ADD</button>
+                            <!-- <button class="primary" type="button" id="addbtn" onclick="add();">ADD</button> -->
+                            <button class="primary" type="button" id="addbtn">ADD</button>
                         </div>
                         <div class="box">
                             <button class="primary hidden" type="button" id="update"
@@ -132,8 +133,128 @@
 
 
 
-        <script src="/js/ExpenseTracker/firstpage.js"></script>
+       
 </body>
+
+<!-- load firebase javascript SDK libraries from the cdn -->
+<!-- <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDWcpSJyDXwh6ReQ_8DvnIimkswPUz1GV0",
+      authDomain: "expensetracker-25411.firebaseapp.com",
+      projectId: "expensetracker-25411",
+      storageBucket: "expensetracker-25411.appspot.com",
+      messagingSenderId: "109718325029",
+      appId: "1:109718325029:web:c4cfa6062340fc60d57ccc"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    
+  </script> -->
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="/js/ExpenseTracker/firstpage.js"></script>
+
+  <script type="module" src="/js/ExpenseTracker/firstpageFB.js"></script>
+  <!-- importing the function addfb  -->
+  <script type="module">
+    import {addfb,getAllDoc,viewelem} from "/js/ExpenseTracker/firstpageFB.js";
+    document.getElementById("addbtn").addEventListener("click",function(event){
+        addfb();
+    });
+
+    getAllDoc();
+    
+  </script>
+  <!-- <script type="module">
+    // // Import the functions you need from the SDKs you need
+    // // import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+    // // import firebase from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js";
+    
+    // // import firebase/firestore;// from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js";
+    // // TODO: Add SDKs for Firebase products that you want to use
+    // // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // // import firebase from "firebase/compat/app";
+    // // // Required for side-effects
+    // // import "firebase/firestore";
+
+    // import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js'
+    // import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
+
+
+    // // Your web app's Firebase configuration
+    // const firebaseConfig = {
+    //   apiKey: "AIzaSyDWcpSJyDXwh6ReQ_8DvnIimkswPUz1GV0",
+    //   authDomain: "expensetracker-25411.firebaseapp.com",
+    //   projectId: "expensetracker-25411",
+    //   storageBucket: "expensetracker-25411.appspot.com",
+    //   messagingSenderId: "109718325029",
+    //   appId: "1:109718325029:web:c4cfa6062340fc60d57ccc"
+    // };
+  
+    // // Initialize Firebase
+    // const app = initializeApp(firebaseConfig);
+    // const db = getFirestore(app);
+    // try {
+    // const docRef = await addDoc(collection(db, "users"), {
+    //     first: "Ada",
+    //     last: "Lovelace",
+    //     born: 1815
+    // });
+    // console.log("Document written with ID: ", docRef.id);
+    // } catch (e) {
+    // console.error("Error adding document: ", e);
+    // }
+
+  </script> -->
+
+  <!-- <script type="module">
+    // Import the functions you need from the SDKs you need
+ 
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+
+    import { getFirestore } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
+    import { collection, addDoc } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js"; 
+    // import firebase from "firebase/app";
+    // import "firebase/firestore";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDWcpSJyDXwh6ReQ_8DvnIimkswPUz1GV0",
+      authDomain: "expensetracker-25411.firebaseapp.com",
+      projectId: "expensetracker-25411",
+      storageBucket: "expensetracker-25411.appspot.com",
+      messagingSenderId: "109718325029",
+      appId: "1:109718325029:web:c4cfa6062340fc60d57ccc"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    const db = getFirestore();
+
+    try {
+  const docRef = await addDoc(collection(db, "users"), {
+    first: "Ada",
+    last: "Lovelace",
+    born: 1815
+  });
+  console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+  console.error("Error adding document: ", e);
+}
+
+  </script> -->
 
 </html>
 

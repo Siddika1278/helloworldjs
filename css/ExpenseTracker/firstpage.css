@@ -21,6 +21,8 @@ body {
 .right {
     right: 0;
     background-color: rgb(133, 151, 161);
+    /* overflow: scroll; */
+    overflow-y: scroll;
 }
 
 /* .centered{
@@ -179,7 +181,7 @@ input[type="radio"] {
 ul#data {
     list-style-type: none;
     padding: inherit;
-    margin:50px
+    margin:50px;
 }
 
 li.eachentry {
@@ -228,5 +230,5 @@ li.eachentry {
     /* display:inline-block; */
 }
 .buttonsdesign{
-    margin-left: 75%;
+    margin-left: 74%;
 }

@@ -3,187 +3,231 @@
 // on each add
 // singleEXp = {date:,amount,}
 // exp.add(singleEXp);
+// Import the functions you need from the SDKs you need
+// import { initializeApp } from "https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js";
+// // TODO: Add SDKs for Firebase products that you want to use
+// // https://firebase.google.com/docs/web/setup#available-libraries
 
-expenses = [
-    {
-        "date": "2023-06-19",
-        "time": "17:01",
-        "category": "Dairy Products",
-        "amount": "9576",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-23",
-        "time": "17:02",
-        "category": "Snacks",
-        "amount": "900",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-19",
-        "time": "17:32",
-        "category": "Electronics",
-        "amount": "78542",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-19",
-        "time": "17:42",
-        "category": "Travel Expense",
-        "amount": "78965",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-19",
-        "time": "17:42",
-        "category": "Snacks",
-        "amount": "530",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-19",
-        "time": "17:42",
-        "category": "Dairy Products",
-        "amount": "856",
-        "description": "ews",
-        "method": "cash"
-    },
-    {
-        "date": "2023-06-19",
-        "time": "17:42",
-        "category": "Electronics",
-        "amount": "23564",
-        "description": "ews",
-        "method": "cash"
-    }
-];
+// import firebase from "firebase/app";
+// import "firebase/firestore";
 
-function add() {
-    //1. Oncick of add button the function prints the inputed value to the console.
+// // Your web app's Firebase configuration
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDWcpSJyDXwh6ReQ_8DvnIimkswPUz1GV0",
+//   authDomain: "expensetracker-25411.firebaseapp.com",
+//   projectId: "expensetracker-25411",
+//   storageBucket: "expensetracker-25411.appspot.com",
+//   messagingSenderId: "109718325029",
+//   appId: "1:109718325029:web:c4cfa6062340fc60d57ccc"
+// };
 
-    // console.log(document.getElementById('date').value,
-    // document.getElementById('time').value,
-    // document.getElementById('category').value,
-    // document.getElementById('amount').value,
-    // document.getElementById('description').value,
-    // document.querySelector('input[name="method"]:checked').value 
-    // );
+// // Initialize Firebase
+// const app = initializeApp(firebaseConfig);
 
-    // validate();
-    if (!validate()) return false;
-    //2. Stroing the input values in object
+// //Initialize Cloud Firestore and get a reference to the service
+// const db = firebase.firestore();
 
-    const singleExp = {
-        date: document.getElementById('date').value,
-        time: document.getElementById('time').value,
-        category: document.getElementById('category').value,
-        amount: document.getElementById('amount').value,
-        description: document.getElementById('description').value,
-        method: document.querySelector('input[name="method"]:checked').value
-    }
-    //to add object to array
-    expenses.push(singleExp);
+// db.collection("testing").add({
+//    first: "Ada",
+//    last: "Lovelace",
+//    born:1815
+// })
+// .then((docRef) => {
+//    console.log("Document written with ID: ", docRef.id);
+// })
+// .catch((error) => {
+//    console.error("Error adding document: ", error);
+// });
 
-    // console.log(expense.date, expense.time, expense.category, expense.amount, expense.desription, expense.method);
-    console.log(expenses);
+expenses = [];
+// expenses = [
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:01",
+//         "category": "Dairy Products",
+//         "amount": "9576",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-23",
+//         "time": "17:02",
+//         "category": "Snacks",
+//         "amount": "900",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:32",
+//         "category": "Electronics",
+//         "amount": "78542",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:42",
+//         "category": "Travel Expense",
+//         "amount": "78965",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:42",
+//         "category": "Snacks",
+//         "amount": "530",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:42",
+//         "category": "Dairy Products",
+//         "amount": "856",
+//         "description": "ews",
+//         "method": "cash"
+//     },
+//     {
+//         "date": "2023-06-19",
+//         "time": "17:42",
+//         "category": "Electronics",
+//         "amount": "23564",
+//         "description": "ews",
+//         "method": "cash"
+//     }
+// ];
 
-    // let html = "";
+//Comenting to check the add function that would work for firestore
 
-    //Here it loops for aal elements so for large data it'll take time to load so instead we have to append
-    // expenses.forEach((variable)=>{
+// function add() {
+//     //1. Oncick of add button the function prints the inputed value to the console.
 
-    // html+= `<tr><td>${variable.date}</td>
-    // <td>${variable.time}</td>
-    // <td>${variable.category}</td>
-    // <td>${variable.amount}</td>
-    // <td>${variable.description}</td> 
-    // <td>${variable.method}</td> 
-    // <tr>`});
+//     // console.log(document.getElementById('date').value,
+//     // document.getElementById('time').value,
+//     // document.getElementById('category').value,
+//     // document.getElementById('amount').value,
+//     // document.getElementById('description').value,
+//     // document.querySelector('input[name="method"]:checked').value 
+//     // );
 
+//     // validate();
+//     if (!validate()) return false;
+//     //2. Stroing the input values in object
 
-    //here we append new row with input data in tablebody in html file we gave id="data" in tbody tag
-    // variable = singleExp;
-    // document.getElementById('data').innerHTML += 
-    //     `<tr><td>${variable.date}</td>
-    //     <td>${variable.time}</td>
-    //     <td>${variable.category}</td>
-    //     <td>${variable.amount}</td>
-    //     <td>${variable.description}</td> 
-    //     <td>${variable.method}</td> 
-    //     <tr>` ;
-    // }
+//     const singleExp = {
+//         date: document.getElementById('date').value,
+//         time: document.getElementById('time').value,
+//         category: document.getElementById('category').value,
+//         amount: document.getElementById('amount').value,
+//         description: document.getElementById('description').value,
+//         method: document.querySelector('input[name="method"]:checked').value
+//     }
+//     //to add object to array
+//     expenses.push(singleExp);
 
+//     // console.log(expense.date, expense.time, expense.category, expense.amount, expense.desription, expense.method);
+//     console.log(expenses);
 
-    // //1. adding id to the object
-    // expenses[expenses.length -1].id = expenses.length -1;
-    // //setting variable with new object that has id
-    // variable = expenses[expenses.length -1];
-    // document.getElementById('data').innerHTML += 
-    //     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
-    //     `+getBody(variable)+ `</li>
-    //     ` ;
-    // resetThis();
-    // }
-    // function getBody(m){
-    //     return `<div class="title">${m.category}</div>
-    //     <div class="amount">Rs. ${m.amount}</div>
-    //     <div class="description">${m.description}</div>
-    //     <button onclick="deleteelem('${m.id}')">DELETE</button>
-    //     `;
-    //     //m.id gives the id
-    // }
+//     // let html = "";
+
+//     //Here it loops for aal elements so for large data it'll take time to load so instead we have to append
+//     // expenses.forEach((variable)=>{
+
+//     // html+= `<tr><td>${variable.date}</td>
+//     // <td>${variable.time}</td>
+//     // <td>${variable.category}</td>
+//     // <td>${variable.amount}</td>
+//     // <td>${variable.description}</td> 
+//     // <td>${variable.method}</td> 
+//     // <tr>`});
 
 
-    //2. using another parameter
+//     //here we append new row with input data in tablebody in html file we gave id="data" in tbody tag
+//     // variable = singleExp;
+//     // document.getElementById('data').innerHTML += 
+//     //     `<tr><td>${variable.date}</td>
+//     //     <td>${variable.time}</td>
+//     //     <td>${variable.category}</td>
+//     //     <td>${variable.amount}</td>
+//     //     <td>${variable.description}</td> 
+//     //     <td>${variable.method}</td> 
+//     //     <tr>` ;
+//     // }
 
-    variable = singleExp;
-    document.getElementById('data').innerHTML +=
-        `<li class="eachentry">
-`+ getBody(variable, expenses.length - 1) + `</li>
-` ;
-resetThis();
-}
+
+//     // //1. adding id to the object
+//     // expenses[expenses.length -1].id = expenses.length -1;
+//     // //setting variable with new object that has id
+//     // variable = expenses[expenses.length -1];
+//     // document.getElementById('data').innerHTML += 
+//     //     `<li class="eachentry" expid="${expenses.length -1}" onclick="details('${expenses.length -1}')">
+//     //     `+getBody(variable)+ `</li>
+//     //     ` ;
+//     // resetThis();
+//     // }
+//     // function getBody(m){
+//     //     return `<div class="title">${m.category}</div>
+//     //     <div class="amount">Rs. ${m.amount}</div>
+//     //     <div class="description">${m.description}</div>
+//     //     <button onclick="deleteelem('${m.id}')">DELETE</button>
+//     //     `;
+//     //     //m.id gives the id
+//     // }
+
+
+//     //2. using another parameter
+
+//     variable = singleExp;
+//     document.getElementById('data').innerHTML +=
+//         `<li class="eachentry">
+// `+ getBody(variable, expenses.length - 1) + `</li>
+// ` ;
+// resetThis();
+// }
 
 function getBody(m, s) {
     return `<div class="title">${m.category}</div>
 <div class="amount">Rs. ${m.amount}</div>
 <div class="description">${m.description}</div>
 <div class="buttonsdesign">
-<button class="viewbutton" onclick="viewelem('${s}')">VIEW</button>
-<button class="editbutton" expid="${s}" onclick="details('${s}')">EDIT</button>
+<button class="viewbutton" expid="${s}">VIEW</button>
+<button class="editbutton" expid="${s}">EDIT</button>
 <button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button></div>
 `;
 }
-
-function viewelem(xyz) {
-    document.getElementById('formcontent').classList.add('hidden');
-    document.getElementById('edit').classList.remove('hidden');
-    //    let v=Object.values(xyz);
-    let obj = expenses[xyz];
-    // for (i = 0; i < k.length; i++) {
-    //    document.getElementById('tablee').innerHTML += ` <tr>
-    //         <td>${k[i]}</td>     
-    //         <td>${}</td>      
-    //     </tr>`
-    //     // document.getElementById('property').innerHTML += `${k[i]}`
-    //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
-    // }
-    let html = "";
-    Object.entries(obj).forEach(arr => {
-        html += ` <tr>
-            <td>${arr[0]}</td>     
-            <td>${arr[1]}</td>      
-        </tr>`;
-    });
-    document.getElementById('tbody').innerHTML = html;
+//before change 
+// <button class="viewbutton" onclick="viewelem('${s}')">VIEW</button> 
+//<button class="editbutton" expid="${s}" onclick="details('${s}')">EDIT</button>
 
 
-}
+
+
+// function viewelem(xyz) {
+//     document.getElementById('formcontent').classList.add('hidden');
+//     document.getElementById('edit').classList.remove('hidden');
+//     //    let v=Object.values(xyz);
+//     let obj = expenses[xyz];
+//     // for (i = 0; i < k.length; i++) {
+//     //    document.getElementById('tablee').innerHTML += ` <tr>
+//     //         <td>${k[i]}</td>     
+//     //         <td>${}</td>      
+//     //     </tr>`
+//     //     // document.getElementById('property').innerHTML += `${k[i]}`
+//     //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
+//     // }
+//     let html = "";
+//     Object.entries(obj).forEach(arr => {
+//         html += ` <tr>
+//             <td>${arr[0]}</td>     
+//             <td>${arr[1]}</td>      
+//         </tr>`;
+//     });
+//     document.getElementById('tbody').innerHTML = html;
+
+
+// }
 //cross button on view
 function change() {
     document.getElementById('edit').classList.add('hidden');
@@ -193,32 +237,33 @@ function change() {
 
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
-
-function details(x) {
-    //changing title
-    // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
-    document.getElementById('inserttitle').innerHTML = `Edit Your `;
-
-    let singleexp = expenses[x];
-    if (singleexp === undefined) return true;
-    document.getElementById('date').value = singleexp.date;
-    document.getElementById('time').value = singleexp.time;
-    document.getElementById('category').value = singleexp.category;
-    document.getElementById('amount').value = singleexp.amount;
-    document.getElementById('description').value = singleexp.description;
-    document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
-
-    //Showing the edit title
-    // document.getElementById('inserttitle').classList.add('hidden');
-    // document.getElementById('edit').classList.remove('hidden');
-
-    //hiding add button ana showning update button
-
-    document.getElementById('addbtn').classList.add('hidden');
-    document.getElementById('update').classList.remove('hidden');
+// import {getSingleDoc} from "/js/ExpenseTracker/firstpageFB.js"; 
+//  function details(x) {
+//     //changing title
+//     // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
+//     document.getElementById('inserttitle').innerHTML = `Edit Your `;
     
-    document.getElementById('update').setAttribute("expid", x);
-}
+//     // let singleexp = await getSingleDoc(x);
+//     let singleexp = expenses[x];
+//     if (singleexp === undefined) return true;
+//     document.getElementById('date').value = singleexp.date;
+//     document.getElementById('time').value = singleexp.time;
+//     document.getElementById('category').value = singleexp.category;
+//     document.getElementById('amount').value = singleexp.amount;
+//     document.getElementById('description').value = singleexp.description;
+//     document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
+
+//     //Showing the edit title
+//     // document.getElementById('inserttitle').classList.add('hidden');
+//     // document.getElementById('edit').classList.remove('hidden');
+
+//     //hiding add button ana showning update button
+
+//     document.getElementById('addbtn').classList.add('hidden');
+//     document.getElementById('update').classList.remove('hidden');
+    
+//     document.getElementById('update').setAttribute("expid", x);
+// }
 
 function resetThis() {
     // document.getElementById('inserttitle').innerHTML = `New Transaction`;
@@ -228,7 +273,9 @@ function resetThis() {
     document.getElementById('category').value = "";
     document.getElementById('amount').value = "";
     document.getElementById('description').value = "";
-    document.querySelector('input[name="method"]:checked').checked = false;
+    if(document.querySelector('input[name="method"]:checked')){
+        document.querySelector('input[name="method"]:checked').checked = false;
+    }
     document.getElementById('update').classList.add('hidden');
     document.getElementById('addbtn').classList.remove('hidden');
 
@@ -356,3 +403,8 @@ expenses.forEach((variable, id) => {
 `+ getBody(variable, id) + `</li>
 ` ;
 });
+
+
+
+
+ 
