@@ -281,30 +281,30 @@ function resetThis() {
 
 }
 
-function updateDetails() {
-    let x = document.getElementById('update').getAttribute('expid');
-    expenses[x].date = document.getElementById('date').value,
-        expenses[x].time = document.getElementById('time').value,
-        expenses[x].category = document.getElementById('category').value,
-        expenses[x].amount = document.getElementById('amount').value,
-        expenses[x].description = document.getElementById('description').value,
-        expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
-    //showing the updated values in right side list
-    //for the id that we updated the values in li we change it , i.e called the function and it takes the new values using id x
+// function updateDetails() {
+//     let x = document.getElementById('update').getAttribute('expid');
+//     expenses[x].date = document.getElementById('date').value,
+//         expenses[x].time = document.getElementById('time').value,
+//         expenses[x].category = document.getElementById('category').value,
+//         expenses[x].amount = document.getElementById('amount').value,
+//         expenses[x].description = document.getElementById('description').value,
+//         expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
+//     //showing the updated values in right side list
+//     //for the id that we updated the values in li we change it , i.e called the function and it takes the new values using id x
 
-    //when not taking another parameter
-    // document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
+//     //when not taking another parameter
+//     // document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
 
-    //when using another parameter
-    // document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
-    document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
+//     //when using another parameter
+//     // document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
+//     document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
 
-    //reseting the values and showing add button and hiding update button
-    resetThis();
+//     //reseting the values and showing add button and hiding update button
+//     resetThis();
 
-    // document.getElementById('inserttitle').classList.remove('hidden');
-    // document.getElementById('edit').classList.add('hidden');
-}
+//     // document.getElementById('inserttitle').classList.remove('hidden');
+//     // document.getElementById('edit').classList.add('hidden');
+// }
 
 
 

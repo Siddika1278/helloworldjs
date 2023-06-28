@@ -70,9 +70,9 @@
                             <button class="primary" type="button" id="addbtn">ADD</button>
                         </div>
                         <div class="box">
-                            <button class="primary hidden" type="button" id="update"
-                                onclick="updateDetails()">UPDATE</button>
-                            <!-- <button class="primary hidden" type="button" id="update">UPDATE</button> -->
+                            <!-- <button class="primary hidden" type="button" id="update"
+                                onclick="updateDetails()">UPDATE</button> -->
+                            <button class="primary hidden" type="button" id="update">UPDATE</button>
                         </div>
                         <div class="box">
                             <button class="sec" type="button" onclick="resetThis()">CANCEL</button>
@@ -166,13 +166,14 @@
   <script type="module" src="/js/ExpenseTracker/firstpageFB.js"></script>
   <!-- importing the function addfb  -->
   <script type="module">
-    import {addfb,getAllDoc,viewelem} from "/js/ExpenseTracker/firstpageFB.js";
+    import {addfb,getAllDoc,viewelem,updateDetails} from "/js/ExpenseTracker/firstpageFB.js";
     document.getElementById("addbtn").addEventListener("click",function(event){
         addfb();
     });
-    // document.getElementById("update").addEventListener("click",function(event){
-    //     updateDetails();
-    // });
+    document.getElementById("update").addEventListener("click",function(event){
+        let x = document.getElementById('update').getAttribute('expid');
+        updateDetails(x);
+    });
 
     getAllDoc();
     

@@ -11,7 +11,7 @@
 // import "firebase/firestore";
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js'
-import { getFirestore, collection, addDoc, getDoc, getDocs, doc , deleteDoc} from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
+import { getFirestore, collection, addDoc, getDoc, getDocs, doc , deleteDoc, updateDoc} from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
 
 
 // Your web app's Firebase configuration
@@ -139,15 +139,32 @@ export async function getsingleDoc(id) {
         console.log(e);
     }
 }
+
  export async function deleteelem(ms) {
     await deleteDoc(doc(db, "entries", ms));
-    //To get updated data in our firebase
+    //To get updated data in our firebase ater deleting of the particular document in collection
+
     getAllDoc();
     if (document.getElementById('update').getAttribute('expid') == ms) {
         resetThis();
     }
 
 }
+//updatedetails for firebase
+export async function updateDetails(id) {
+    await updateDoc(doc(db, "entries", id),{
+        date : document.getElementById('date').value,
+        time : document.getElementById('time').value,
+        category : document.getElementById('category').value,
+        amount : document.getElementById('amount').value,
+        description : document.getElementById('description').value,
+        method : document.querySelector('input[name ="method"]:checked').value
+    });
+    getAllDoc();
+    resetThis();
+}
+
+
 
 //function details, what we did for it is that we passed our object in the method we already had and by
 //doing so we won't get id, so we passed id as another parameter. 
@@ -226,6 +243,7 @@ export async function getAllDoc() {
                 deleteelem(x);
             })
         });
+
     }
     catch (e) {
         console.log(e);
