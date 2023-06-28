@@ -190,7 +190,9 @@ expenses = [];
 function getBody(m, s) {
     return `<div class="title">${m.category}</div>
 <div class="amount">Rs. ${m.amount}</div>
-<div class="description">${m.description}</div>
+<div class="description">${m.date}</div>
+<div class="description">${m.method}</div>
+
 <div class="buttonsdesign">
 <button class="viewbutton" expid="${s}">VIEW</button>
 <button class="editbutton" expid="${s}">EDIT</button>
@@ -203,31 +205,43 @@ function getBody(m, s) {
 //<button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button></div>
 
 
+//orignal one
+// function getBody(m, s) {
+//     return `<div class="title">${m.category}</div>
+// <div class="amount">Rs. ${m.amount}</div>
+// <div  class="description">${m.description}</div>
 
-function viewelem(xyz) {
-    document.getElementById('formcontent').classList.add('hidden');
-    document.getElementById('edit').classList.remove('hidden');
-    //    let v=Object.values(xyz);
-    let obj = expenses[xyz];
-    // for (i = 0; i < k.length; i++) {
-    //    document.getElementById('tablee').innerHTML += ` <tr>
-    //         <td>${k[i]}</td>     
-    //         <td>${}</td>      
-    //     </tr>`
-    //     // document.getElementById('property').innerHTML += `${k[i]}`
-    //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
-    // }
-    let html = "";
-    Object.entries(obj).forEach(arr => {
-        html += ` <tr>
-            <td>${arr[0]}</td>     
-            <td>${arr[1]}</td>      
-        </tr>`;
-    });
-    document.getElementById('tbody').innerHTML = html;
+// <div class="buttonsdesign">
+// <button class="viewbutton" expid="${s}">VIEW</button>
+// <button class="editbutton" expid="${s}">EDIT</button>
+// <button class="deletebutton" expid="${s}">DELETE</button></div>
+// `;
+// }
+
+// function viewelem(xyz) {
+//     document.getElementById('formcontent').classList.add('hidden');
+//     document.getElementById('edit').classList.remove('hidden');
+//     //    let v=Object.values(xyz);
+//     let obj = expenses[xyz];
+//     // for (i = 0; i < k.length; i++) {
+//     //    document.getElementById('tablee').innerHTML += ` <tr>
+//     //         <td>${k[i]}</td>     
+//     //         <td>${}</td>      
+//     //     </tr>`
+//     //     // document.getElementById('property').innerHTML += `${k[i]}`
+//     //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
+//     // }
+//     let html = "";
+//     Object.entries(obj).forEach(arr => {
+//         html += ` <tr>
+//             <td>${arr[0]}</td>     
+//             <td>${arr[1]}</td>      
+//         </tr>`;
+//     });
+//     document.getElementById('tbody').innerHTML = html;
 
 
-}
+// }
 //cross button on view
 function change() {
     document.getElementById('edit').classList.add('hidden');
