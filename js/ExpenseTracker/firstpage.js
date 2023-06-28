@@ -194,40 +194,40 @@ function getBody(m, s) {
 <div class="buttonsdesign">
 <button class="viewbutton" expid="${s}">VIEW</button>
 <button class="editbutton" expid="${s}">EDIT</button>
-<button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button></div>
+<button class="deletebutton" expid="${s}">DELETE</button></div>
 `;
 }
 //before change 
 // <button class="viewbutton" onclick="viewelem('${s}')">VIEW</button> 
 //<button class="editbutton" expid="${s}" onclick="details('${s}')">EDIT</button>
+//<button class="deletebutton" onclick="deleteelem('${s}')">DELETE</button></div>
 
 
 
+function viewelem(xyz) {
+    document.getElementById('formcontent').classList.add('hidden');
+    document.getElementById('edit').classList.remove('hidden');
+    //    let v=Object.values(xyz);
+    let obj = expenses[xyz];
+    // for (i = 0; i < k.length; i++) {
+    //    document.getElementById('tablee').innerHTML += ` <tr>
+    //         <td>${k[i]}</td>     
+    //         <td>${}</td>      
+    //     </tr>`
+    //     // document.getElementById('property').innerHTML += `${k[i]}`
+    //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
+    // }
+    let html = "";
+    Object.entries(obj).forEach(arr => {
+        html += ` <tr>
+            <td>${arr[0]}</td>     
+            <td>${arr[1]}</td>      
+        </tr>`;
+    });
+    document.getElementById('tbody').innerHTML = html;
 
-// function viewelem(xyz) {
-//     document.getElementById('formcontent').classList.add('hidden');
-//     document.getElementById('edit').classList.remove('hidden');
-//     //    let v=Object.values(xyz);
-//     let obj = expenses[xyz];
-//     // for (i = 0; i < k.length; i++) {
-//     //    document.getElementById('tablee').innerHTML += ` <tr>
-//     //         <td>${k[i]}</td>     
-//     //         <td>${}</td>      
-//     //     </tr>`
-//     //     // document.getElementById('property').innerHTML += `${k[i]}`
-//     //     // document.getElementById('value').innerHTML += `${xyz[k[i]]}`
-//     // }
-//     let html = "";
-//     Object.entries(obj).forEach(arr => {
-//         html += ` <tr>
-//             <td>${arr[0]}</td>     
-//             <td>${arr[1]}</td>      
-//         </tr>`;
-//     });
-//     document.getElementById('tbody').innerHTML = html;
 
-
-// }
+}
 //cross button on view
 function change() {
     document.getElementById('edit').classList.add('hidden');
@@ -238,32 +238,32 @@ function change() {
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
 // import {getSingleDoc} from "/js/ExpenseTracker/firstpageFB.js"; 
-//  function details(x) {
-//     //changing title
-//     // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
-//     document.getElementById('inserttitle').innerHTML = `Edit Your `;
+async function details(elemdata,x) {
+    //changing title
+    // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
+    document.getElementById('inserttitle').innerHTML = `Edit Your `;
     
-//     // let singleexp = await getSingleDoc(x);
-//     let singleexp = expenses[x];
-//     if (singleexp === undefined) return true;
-//     document.getElementById('date').value = singleexp.date;
-//     document.getElementById('time').value = singleexp.time;
-//     document.getElementById('category').value = singleexp.category;
-//     document.getElementById('amount').value = singleexp.amount;
-//     document.getElementById('description').value = singleexp.description;
-//     document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
+    // let singleexp = await getSingleDoc(x);
+    let singleexp =  elemdata;
+    // let singleexp = expenses[x];
+    if (singleexp === undefined) return true;
+    document.getElementById('date').value = singleexp.date;
+    document.getElementById('time').value = singleexp.time;
+    document.getElementById('category').value = singleexp.category;
+    document.getElementById('amount').value = singleexp.amount;
+    document.getElementById('description').value = singleexp.description;
+    document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
 
-//     //Showing the edit title
-//     // document.getElementById('inserttitle').classList.add('hidden');
-//     // document.getElementById('edit').classList.remove('hidden');
+    //Showing the edit title
+    // document.getElementById('inserttitle').classList.add('hidden');
+    // document.getElementById('edit').classList.remove('hidden');
 
-//     //hiding add button ana showning update button
+    //hiding add button ana showning update button
 
-//     document.getElementById('addbtn').classList.add('hidden');
-//     document.getElementById('update').classList.remove('hidden');
-    
-//     document.getElementById('update').setAttribute("expid", x);
-// }
+    document.getElementById('addbtn').classList.add('hidden');
+    document.getElementById('update').classList.remove('hidden');
+    document.getElementById('update').setAttribute("expid", x);
+}
 
 function resetThis() {
     // document.getElementById('inserttitle').innerHTML = `New Transaction`;
@@ -296,7 +296,9 @@ function updateDetails() {
     // document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
 
     //when using another parameter
+    // document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
     document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
+
     //reseting the values and showing add button and hiding update button
     resetThis();
 
@@ -304,15 +306,18 @@ function updateDetails() {
     // document.getElementById('edit').classList.add('hidden');
 }
 
-function deleteelem(ms) {
-    expenses[ms] = undefined;
-    document.querySelector('li[expid="' + ms + '"]').remove();
 
-    if (document.getElementById('update').getAttribute('expid') == ms) {
-        resetThis();
-    }
 
-}
+// function deleteelem(ms) {
+//     //we set it undefined as we wanted to remove the details but wanted to preserve the index
+//     expenses[ms] = undefined;
+//     document.querySelector('li[expid="' + ms + '"]').remove();
+
+//     if (document.getElementById('update').getAttribute('expid') == ms) {
+//         resetThis();
+//     }
+// }
+
 
 //mdn properties see
 

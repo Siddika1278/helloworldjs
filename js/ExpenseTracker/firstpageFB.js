@@ -11,7 +11,7 @@
 // import "firebase/firestore";
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js'
-import { getFirestore, collection, addDoc, getDoc, getDocs, doc } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
+import { getFirestore, collection, addDoc, getDoc, getDocs, doc , deleteDoc} from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
 
 
 // Your web app's Firebase configuration
@@ -29,7 +29,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
-console.log(expenses);
+// console.log(expenses); 
 
 //code written for checking    
 // try {
@@ -139,22 +139,19 @@ export async function getsingleDoc(id) {
         console.log(e);
     }
 }
-async function details(x) {
-    document.getElementById('inserttitle').innerHTML = `Edit Your `;
-    
-    let singleexp = await getsingleDoc(x);
-    if (singleexp === undefined) return true;
-    document.getElementById('date').value = singleexp.date;
-    document.getElementById('time').value = singleexp.time;
-    document.getElementById('category').value = singleexp.category;
-    document.getElementById('amount').value = singleexp.amount;
-    document.getElementById('description').value = singleexp.description;
-    document.querySelector('input[value="' + singleexp.method + '"]').checked = true;
-    document.getElementById('addbtn').classList.add('hidden');
-    document.getElementById('update').classList.remove('hidden');
-    document.getElementById('update').setAttribute("expid", x);
+ export async function deleteelem(ms) {
+    await deleteDoc(doc(db, "entries", ms));
+    //To get updated data in our firebase
+    getAllDoc();
+    if (document.getElementById('update').getAttribute('expid') == ms) {
+        resetThis();
+    }
+
 }
 
+//function details, what we did for it is that we passed our object in the method we already had and by
+//doing so we won't get id, so we passed id as another parameter. 
+//By all this we didn't had to make another method and comment the previous one as we did in viewelem
 
 export async function viewelem(xyz) {
     
@@ -173,28 +170,6 @@ export async function viewelem(xyz) {
     document.getElementById('tbody').innerHTML = html;
 }
 
-function updateDetails() {
-    let x = document.getElementById('update').getAttribute('expid');
-    expenses[x].date = document.getElementById('date').value,
-        expenses[x].time = document.getElementById('time').value,
-        expenses[x].category = document.getElementById('category').value,
-        expenses[x].amount = document.getElementById('amount').value,
-        expenses[x].description = document.getElementById('description').value,
-        expenses[x].method = document.querySelector('input[name ="method"]:checked').value;
-    //showing the updated values in right side list
-    //for the id that we updated the values in li we change it , i.e called the function and it takes the new values using id x
-
-    //when not taking another parameter
-    // document.querySelector('li[expid="'+x+'"]').innerHTML = getBody(expenses[x]);
-
-    //when using another parameter
-    document.querySelector('li[expid="' + x + '"]').innerHTML = getBody(expenses[x], x);
-    //reseting the values and showing add button and hiding update button
-    resetThis();
-
-    // document.getElementById('inserttitle').classList.remove('hidden');
-    // document.getElementById('edit').classList.add('hidden');
-}
 
 
 //function to get all docs
@@ -236,13 +211,21 @@ export async function getAllDoc() {
         });
         
         document.querySelectorAll(".editbutton").forEach((elem=>{
-            elem.addEventListener("click",async function(event){
+            elem.addEventListener("click", async function(event){
                 let x= event.target.getAttribute('expid');
                 // details(x);
                 // console.log(await getsingleDoc(x));
-                details(x)
+                //passing id in parameter as we won't get id in object
+                details(await getsingleDoc(x) , x);
             })
         }));
+
+        document.querySelectorAll(".deletebutton").forEach((elem)=>{
+            elem.addEventListener("click",function(event){
+                let x= event.target.getAttribute('expid');
+                deleteelem(x);
+            })
+        });
     }
     catch (e) {
         console.log(e);
