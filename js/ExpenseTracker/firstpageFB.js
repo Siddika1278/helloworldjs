@@ -194,9 +194,52 @@ export async function getAllDoc() {
     try {
         // const q = query(collection(db, "cities"), where("capital", "==", true));
         let html="";
+        //gets all data
         const querySnapshot = await getDocs(collection(db, "entries"));
-        
+        //one thing we can do is get snapshot array of objects and use array.filter on it and pass it to next loop that prints the list.
+        // querySnapshot = [{},{},{}];
+        // querySnapshot.filter()
+
+        let searchText = document.getElementById('search').value;
+        let searchCategory = document.getElementById('searchCat').value;
+        let searchMode = document.getElementById('searchMod').value;
+        let lowerLimit = document.getElementById('lower').value;
+        let upperLimit = document.getElementById('upper').value;
+       
+        //another option we have is we check the condition for all eements and show those who passed the condition
         querySnapshot.forEach((doc) => {
+            //filter conditions
+            let docData = doc.data();
+            
+            if(!docData.description.includes(searchText)){
+                // console.log(searchText,docData.description);
+                return true;
+            }
+// //cat
+        // if(searchCategory != 'Select a Category'){
+        //      if(!(docData.category == searchCategory)){
+        //         return true;
+        //     }
+        // }    
+
+        //this instead of nested if
+        
+            if(searchCategory != '' && !(docData.category == searchCategory)){
+               return true;
+           }
+//type
+            if(searchMode != '' && !(docData.method == searchMode)){
+                // console.log(searchMode ,docData.method );
+                return true;
+            }  
+//amount 10-20
+            // if(lowerLimit != '' && upperLimit != '' && !(lowerLimit <= docData.amount <= upperLimit)){
+            //     return true;
+            // }
+
+
+//date
+            
             // doc.data() is never undefined for query doc snapshots
 
         //getting data
@@ -207,7 +250,8 @@ export async function getAllDoc() {
         
         html +=
             `<li class="eachentry">
-         `+ getBody(doc.data() , doc.id) + `</li>` ;  
+         `+ getBody(docData , doc.id) + `</li>` ;  
+        // getBody(doc.data(),doc.id) //before filters it was like this
         //wrote this here this would work but writing this outside would be more optimal it rewrites again 
         //and again and we want what we get in last so just make it write once that will engage the dome less as earlier
         //you can also write this inside by some changes recall how (one hint html ='' inside loop)

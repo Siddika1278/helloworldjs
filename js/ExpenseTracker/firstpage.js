@@ -192,6 +192,7 @@ function getBody(m, s) {
 <div class="amount">Rs. ${m.amount}</div>
 <div class="description">${m.date}</div>
 <div class="description">${m.method}</div>
+<div class="description">${m.description}</div>
 
 <div class="buttonsdesign">
 <button class="viewbutton" expid="${s}">VIEW</button>

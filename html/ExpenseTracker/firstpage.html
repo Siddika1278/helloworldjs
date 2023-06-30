@@ -130,7 +130,24 @@
     <div>
         <input type="text"  id="search">
         <label id="datelabel"> From Date <input type="date"  id="fromdate"> To Date<input type="date"  id="todate"></label>
-        
+        <!-- //TODO : add category, payment type -->
+        <label id="categorylabel">Select a Category</label>
+        <select id="searchCat">
+            <option  value = "">Select a Category</option>
+            <option>Dairy Products</option>
+            <option>Snacks</option>
+            <option>Electronics</option>
+            <option>Travel Expense</option>
+        </select>
+        <select id="searchMod">
+            <option value = "">Mode of payment</option>
+            <option>cash</option>
+            <option>debit card</option>
+            <option>credit cards</option>
+        </select>
+        <label >Range from : this<input type="number" id="lower"> to this <input type="number" id="upper"> </label>
+    
+        <button type="button" id = "searchBtn" >Search</button>
     </div>
     <ul id="data"></ul>
 
@@ -177,9 +194,14 @@
         let x = document.getElementById('update').getAttribute('expid');
         updateDetails(x);
     });
-
+    //clicking on search runs the following
+    document.getElementById("searchBtn").addEventListener("click",function(event){
+        getAllDoc();
+    });
     getAllDoc();
     
+
+
   </script>
   <!-- <script type="module">
     // // Import the functions you need from the SDKs you need
