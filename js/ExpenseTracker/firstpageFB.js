@@ -11,7 +11,7 @@
 // import "firebase/firestore";
 
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-app.js'
-import { getFirestore, collection, addDoc, getDoc, getDocs, doc , deleteDoc, updateDoc} from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
+import { getFirestore, collection, addDoc, getDoc, getDocs, doc, deleteDoc, updateDoc } from 'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore.js'
 
 
 // Your web app's Firebase configuration
@@ -140,7 +140,7 @@ export async function getsingleDoc(id) {
     }
 }
 
- export async function deleteelem(ms) {
+export async function deleteelem(ms) {
     await deleteDoc(doc(db, "entries", ms));
     //To get updated data in our firebase ater deleting of the particular document in collection
 
@@ -152,13 +152,13 @@ export async function getsingleDoc(id) {
 }
 //updatedetails for firebase
 export async function updateDetails(id) {
-    await updateDoc(doc(db, "entries", id),{
-        date : document.getElementById('date').value,
-        time : document.getElementById('time').value,
-        category : document.getElementById('category').value,
-        amount : document.getElementById('amount').value,
-        description : document.getElementById('description').value,
-        method : document.querySelector('input[name ="method"]:checked').value
+    await updateDoc(doc(db, "entries", id), {
+        date: document.getElementById('date').value,
+        time: document.getElementById('time').value,
+        category: document.getElementById('category').value,
+        amount: document.getElementById('amount').value,
+        description: document.getElementById('description').value,
+        method: document.querySelector('input[name ="method"]:checked').value
     });
     getAllDoc();
     resetThis();
@@ -171,7 +171,7 @@ export async function updateDetails(id) {
 //By all this we didn't had to make another method and comment the previous one as we did in viewelem
 
 export async function viewelem(xyz) {
-    
+
     document.getElementById('formcontent').classList.add('hidden');
     document.getElementById('edit').classList.remove('hidden');
     //    let v=Object.values(xyz);
@@ -193,7 +193,7 @@ export async function viewelem(xyz) {
 export async function getAllDoc() {
     try {
         // const q = query(collection(db, "cities"), where("capital", "==", true));
-        let html="";
+        let html = "";
         //gets all data
         const querySnapshot = await getDocs(collection(db, "entries"));
         //one thing we can do is get snapshot array of objects and use array.filter on it and pass it to next loop that prints the list.
@@ -205,85 +205,94 @@ export async function getAllDoc() {
         let searchMode = document.getElementById('searchMod').value;
         let lowerLimit = document.getElementById('lower').value;
         let upperLimit = document.getElementById('upper').value;
-       
+        let startDate = document.getElementById('fromdate').value;
+        let endDate = document.getElementById('todate').value;
+
         //another option we have is we check the condition for all eements and show those who passed the condition
         querySnapshot.forEach((doc) => {
             //filter conditions
             let docData = doc.data();
-            
-            if(!docData.description.includes(searchText)){
+            // console.log(docData);
+            if (!docData.description.includes(searchText)) {
                 // console.log(searchText,docData.description);
                 return true;
             }
-// //cat
-        // if(searchCategory != 'Select a Category'){
-        //      if(!(docData.category == searchCategory)){
-        //         return true;
-        //     }
-        // }    
+            // //cat
+            // if(searchCategory != 'Select a Category'){
+            //      if(!(docData.category == searchCategory)){
+            //         return true;
+            //     }
+            // }    
 
-        //this instead of nested if
-        
-            if(searchCategory != '' && !(docData.category == searchCategory)){
-               return true;
-           }
-//type
-            if(searchMode != '' && !(docData.method == searchMode)){
+            //this instead of nested if
+
+            if (searchCategory != '' && !(docData.category == searchCategory)) {
+                return true;
+            }
+            //type
+            if (searchMode != '' && !(docData.method == searchMode)) {
                 // console.log(searchMode ,docData.method );
                 return true;
-            }  
-//amount 10-20
-            // if(lowerLimit != '' && upperLimit != '' && !(lowerLimit <= docData.amount <= upperLimit)){
+            }
+            //amount 10-20
+            // console.log(parseInt(lowerLimit) <= docData.amount <= parseInt(upperLimit)); //doesn't takt condition together like this
+            // console.log(lowerLimit <= docData.amount && docData.amount <= upperLimit); //gave results not we want so this
+            // console.log(parseInt(lowerLimitt) <= docData.amount , docData.amount <= parseInt(upperLimitt), lowerLimitt,docData.amount, upperLimitt, );
+            //parseInt because the values we get from document are always in string so to convert it in int
+            if (lowerLimit != '' && upperLimit != '' && !(parseInt(lowerLimit) <= parseInt(docData.amount) && parseInt(docData.amount)<= parseInt(upperLimit))) {
+                return true;
+            }
+            //date
+            if (startDate != '' && endDate != '' && !(new Date(startDate) <= new Date(docData.date) && new Date(docData.date) <= new Date(endDate))) {
+                return true;
+            }
+            // if(Date(startDate)<= docData.date && docData.date<= Date(endDate)){
             //     return true;
             // }
-
-
-//date
-            
             // doc.data() is never undefined for query doc snapshots
 
-        //getting data
+            //getting data
             // console.log(doc.id, " => ", doc.data());
             // console.log(doc.data().category)
-           
-        //ecitcarp siht +=  =  + 
-        
-        html +=
-            `<li class="eachentry">
-         `+ getBody(docData , doc.id) + `</li>` ;  
-        // getBody(doc.data(),doc.id) //before filters it was like this
-        //wrote this here this would work but writing this outside would be more optimal it rewrites again 
-        //and again and we want what we get in last so just make it write once that will engage the dome less as earlier
-        //you can also write this inside by some changes recall how (one hint html ='' inside loop)
-        //  document.getElementById('data').innerHTML = html;       
-        }); 
-        document.getElementById('data').innerHTML = html; 
+
+            //ecitcarp siht +=  =  + 
+
+            html +=
+                `<li class="eachentry">
+         `+ getBody(docData, doc.id) + `</li>`;
+            // getBody(doc.data(),doc.id) //before filters it was like this
+            //wrote this here this would work but writing this outside would be more optimal it rewrites again 
+            //and again and we want what we get in last so just make it write once that will engage the dome less as earlier
+            //you can also write this inside by some changes recall how (one hint html ='' inside loop)
+            //  document.getElementById('data').innerHTML = html;       
+        });
+        document.getElementById('data').innerHTML = html;
         //We wrote this in script tag in html file but we didn't get it as we cannot use eventlistner on elements 
         //we don't have in browser. This will work here as at this point we'll get the element
         //and we cannot have same id for multiple things, so using querySelectorAll on class name ans giving eventlistner to all
         //event.target getAttribute expid will get us expid of that particular we want
         //see other functions or stuff we get with event as event.target also you can console.log(event) to see info
 
-        document.querySelectorAll(".viewbutton").forEach((elem)=>{
-            elem.addEventListener("click",function(event){ 
-                let x = event.target.getAttribute('expid');     
+        document.querySelectorAll(".viewbutton").forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                let x = event.target.getAttribute('expid');
                 viewelem(x);
             });
         });
-        
-        document.querySelectorAll(".editbutton").forEach((elem=>{
-            elem.addEventListener("click", async function(event){
-                let x= event.target.getAttribute('expid');
+
+        document.querySelectorAll(".editbutton").forEach((elem => {
+            elem.addEventListener("click", async function (event) {
+                let x = event.target.getAttribute('expid');
                 // details(x);
                 // console.log(await getsingleDoc(x));
                 //passing id in parameter as we won't get id in object
-                details(await getsingleDoc(x) , x);
+                details(await getsingleDoc(x), x);
             })
         }));
 
-        document.querySelectorAll(".deletebutton").forEach((elem)=>{
-            elem.addEventListener("click",function(event){
-                let x= event.target.getAttribute('expid');
+        document.querySelectorAll(".deletebutton").forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                let x = event.target.getAttribute('expid');
                 deleteelem(x);
             })
         });
