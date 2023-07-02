@@ -18,8 +18,6 @@ import { getFirestore, collection, addDoc, getDoc, getDocs, doc, deleteDoc, upda
 const firebaseConfig = {
     apiKey: "AIzaSyDWcpSJyDXwh6ReQ_8DvnIimkswPUz1GV0",
     authDomain: "expensetracker-25411.firebaseapp.com",
-
-
     projectId: "expensetracker-25411",
     storageBucket: "expensetracker-25411.appspot.com",
     messagingSenderId: "109718325029",
@@ -211,6 +209,7 @@ export async function getAllDoc() {
         //another option we have is we check the condition for all eements and show those who passed the condition
         querySnapshot.forEach((doc) => {
             //filter conditions
+            
             let docData = doc.data();
             // console.log(docData);
             if (!docData.description.includes(searchText)) {

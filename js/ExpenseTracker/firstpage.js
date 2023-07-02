@@ -253,6 +253,9 @@ function change() {
 //that will reset the values of formfields to null
 //call this function in add and updateDetails
 // import {getSingleDoc} from "/js/ExpenseTracker/firstpageFB.js"; 
+
+//changing function details(x) , getting whole object in here so we don't have to export-import and by that we wont get id so getting 
+//id through parameter
 async function details(elemdata,x) {
     //changing title
     // document.getElementById('inserttitle').innerHTML = `Edit Your Transaction`;
