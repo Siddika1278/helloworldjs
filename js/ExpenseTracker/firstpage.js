@@ -110,8 +110,3 @@ expenses.forEach((variable, id) => {
 `+ getBody(variable, id) + `</li>
 ` ;
 });
-
-
-
-
- 
