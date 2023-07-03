@@ -1,5 +1,6 @@
 expenses = [];
 
+//getting expense in list
 function getBody(m, s) {
     return `<div class="title">${m.category}</div>
 <div class="amount">Rs. ${m.amount}</div>
@@ -42,6 +43,7 @@ async function details(elemdata,x) {
     document.getElementById('update').setAttribute("expid", x);
 }
 
+//reset function
 function resetThis() {
     document.getElementById('inserttitle').innerHTML = `New `;
     document.getElementById('date').value = "";
@@ -57,6 +59,7 @@ function resetThis() {
 
 }
 
+//form validation
 function validate() {
     if (document.getElementById('date').value == "") {
         // alert("Enter the time");
@@ -64,7 +67,6 @@ function validate() {
         return false;
     }
     else document.getElementById('datelabel').classList.remove('error');
-
 
     if (document.getElementById('time').value == "") {
         // alert("Enter the time");
@@ -102,11 +104,3 @@ function validate() {
 
     return true;
 }
-
-
-expenses.forEach((variable, id) => {
-    document.getElementById('data').innerHTML +=
-        `<li class="eachentry" expid="${id}">
-`+ getBody(variable, id) + `</li>
-` ;
-});
