@@ -1,5 +1,4 @@
 expenses = [];
-
 //getting expense in list
 function getBody(m, s) {
     return `<div class="title">${m.category}</div>
